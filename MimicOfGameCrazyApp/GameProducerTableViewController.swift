@@ -1,5 +1,5 @@
 //
-//  LiveTableViewController.swift
+//  NewGameTableViewController.swift
 //  MimicOfGameCrazyApp
 //
 //  Created by MichaelRevlis on 2016/11/30.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-class LiveTableViewController: UITableViewController {
+class GameProducerTableViewController: UITableViewController {
     
     private var playlistResult = [Playlist]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        YoutuberManager.shared.liveDelegate = self
+        YoutuberManager.shared.gameproducerDelegate = self
         
-        YoutuberManager.shared.getPlaylistData(.Live)
+        YoutuberManager.shared.getPlaylistData(.GameProducer)
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 96
@@ -36,7 +36,7 @@ class LiveTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("liveTableCell", forIndexPath: indexPath) as! LiveTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("gameproducerTableCell", forIndexPath: indexPath) as! GameProducerTableViewCell
         
         let index = self.playlistResult[indexPath.row]
         cell.TitleLabel.text = index.title
@@ -99,8 +99,8 @@ class LiveTableViewController: UITableViewController {
 
 
 
-extension LiveTableViewController: YoutuberManagerLiveDelegate {
-    func liveManager(manager: YoutuberManager, playlistResult: [Playlist]) {
+extension GameProducerTableViewController: YoutuberManagerDelegate {
+    func manager(manager: YoutuberManager, playlistResult: [Playlist]) {
         self.playlistResult = playlistResult
         self.tableView.reloadData()
     }

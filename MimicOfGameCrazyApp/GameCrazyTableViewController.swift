@@ -10,33 +10,45 @@ import UIKit
 
 class GameCrazyTableViewController: UITableViewController {
 
+    private var playlistResult = [Playlist]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        YoutuberManager.shared.gamecrazyDelegate = self
+        
+        YoutuberManager.shared.getPlaylistData(.GameCrazy)
+
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 96
 
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return playlistResult.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCellWithIdentifier("gamecrazyTableCell", forIndexPath: indexPath) as! GameCrazyTableViewCell
+        
+        let index = self.playlistResult[indexPath.row]
+        cell.TitleLabel.text = index.title
+        guard let imageUrl = NSURL(string: index.thumbnailUrl)
+            else { fatalError() }
+        guard let imageData = NSData(contentsOfURL: imageUrl)
+            else { fatalError() }
+        cell.PlayerView.image = UIImage(data: imageData)
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -84,3 +96,16 @@ class GameCrazyTableViewController: UITableViewController {
     */
 
 }
+
+
+
+extension GameCrazyTableViewController: YoutuberManagerGameCrazyDelegate {
+    func gamecrazyManager(manager: YoutuberManager, playlistResult: [Playlist]) {
+        self.playlistResult = playlistResult
+        self.tableView.reloadData()
+    }
+}
+
+
+
+
