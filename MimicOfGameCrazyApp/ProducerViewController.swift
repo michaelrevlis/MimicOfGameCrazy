@@ -21,7 +21,7 @@ class ProducerViewController: UIViewController, WKNavigationDelegate {
         
         let fullScreenSize = UIScreen.mainScreen().bounds.size
         
-        WebView.frame = CGRect(x: 0.0, y: 60.0, width: fullScreenSize.width, height: fullScreenSize.height - 60.0)
+        WebView.frame = CGRect(x: 0.0, y: 0.0, width: fullScreenSize.width, height: fullScreenSize.height)
         
         WebView.navigationDelegate = self
         

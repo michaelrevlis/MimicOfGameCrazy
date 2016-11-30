@@ -1,20 +1,19 @@
 //
-//  CrazyViewController.swift
+//  AdViewController.swift
 //  MimicOfGameCrazyApp
 //
-//  Created by MichaelRevlis on 2016/11/30.
+//  Created by MichaelRevlis on 2016/12/1.
 //  Copyright © 2016年 MichaelRevlis. All rights reserved.
 //
 
 import UIKit
 import WebKit
 
-class CrazyViewController: UIViewController, WKNavigationDelegate {
+class AdViewController: UIViewController, WKNavigationDelegate {
     
     var WebView = WKWebView()
     var myActivityIndicator = UIActivityIndicatorView()
-    let urlString = "https://www.youtube.com/watch?v="
-    var videoId = String()
+    var urlString = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +31,7 @@ class CrazyViewController: UIViewController, WKNavigationDelegate {
         
         self.view.addSubview(myActivityIndicator)
         
-        let fullUrlString = urlString + videoId
-        guard let url = NSURL(string: fullUrlString) else {fatalError()}
+        guard let url = NSURL(string: urlString) else {fatalError()}
         let urlRequest = NSURLRequest(URL: url)
         WebView.loadRequest(urlRequest)
     }
@@ -47,6 +45,7 @@ class CrazyViewController: UIViewController, WKNavigationDelegate {
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         myActivityIndicator.stopAnimating()
     }
+    
     
     /*
      // MARK: - Navigation

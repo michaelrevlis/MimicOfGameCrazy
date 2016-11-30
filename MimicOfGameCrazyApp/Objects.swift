@@ -19,3 +19,26 @@ class Playlist {
         self.videoId = videoId
     }
 }
+
+
+
+class AD {
+    let imageName: String
+    let url: String
+    
+    init(imageName: String, url: String) {
+        self.imageName = imageName
+        self.url = url
+    }
+}
+
+
+enum PlaylistType: Int {
+    case GameCrazy, Live, GameProducer, VRGame
+}
+
+
+enum Section {
+    case AD, Playlist
+}
+

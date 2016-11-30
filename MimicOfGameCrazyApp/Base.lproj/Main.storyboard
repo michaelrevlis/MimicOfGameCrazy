@@ -14,8 +14,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gamecrazyTableCell" id="CLV-Vb-HPx" customClass="GameCrazyTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad1TableViewCell" id="wB1-sY-NYh" customClass="AD1TableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wB1-sY-NYh" id="uCc-tt-NRQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wkz-bh-Z2m">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="wkz-bh-Z2m" firstAttribute="leading" secondItem="uCc-tt-NRQ" secondAttribute="leading" id="VGS-xP-Sko"/>
+                                        <constraint firstAttribute="trailing" secondItem="wkz-bh-Z2m" secondAttribute="trailing" id="axW-zd-lXu"/>
+                                        <constraint firstAttribute="bottom" secondItem="wkz-bh-Z2m" secondAttribute="bottom" id="cw7-jO-keU"/>
+                                        <constraint firstItem="wkz-bh-Z2m" firstAttribute="top" secondItem="uCc-tt-NRQ" secondAttribute="top" id="h2e-uk-vs4"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="AdImageView" destination="wkz-bh-Z2m" id="3Hv-9e-DEP"/>
+                                    <outlet property="ContentView" destination="uCc-tt-NRQ" id="wCQ-03-cQE"/>
+                                    <segue destination="WNk-lU-3F7" kind="show" identifier="showAd1" id="m9C-1D-Daf"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gamecrazyTableCell" id="CLV-Vb-HPx" customClass="GameCrazyTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CLV-Vb-HPx" id="pbk-HL-oTc">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -61,16 +85,23 @@
                             <outlet property="delegate" destination="cQv-Kf-hiV" id="cvI-SX-lrn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="陪你去看電玩瘋" id="HQZ-g6-0UF"/>
+                    <navigationItem key="navigationItem" title="陪你去看電玩瘋" id="HQZ-g6-0UF">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="直播" id="mxx-n0-UKe"/>
+                        <barButtonItem key="rightBarButtonItem" title="GNN" id="XUZ-ym-Ra5">
+                            <connections>
+                                <segue destination="eSu-39-O6U" kind="show" identifier="GNN" id="Wie-iX-mPC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7N-eU-ej5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1292" y="-1328"/>
         </scene>
-        <!--View Controller-->
+        <!--Crazy View Controller-->
         <scene sceneID="frT-RD-tSv">
             <objects>
-                <viewController id="12M-fB-I2h" sceneMemberID="viewController">
+                <viewController id="12M-fB-I2h" customClass="CrazyViewController" customModule="MimicOfGameCrazyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ktl-IO-TQj"/>
                         <viewControllerLayoutGuide type="bottom" id="z7A-Nf-0Qo"/>
@@ -85,11 +116,32 @@
             </objects>
             <point key="canvasLocation" x="2022" y="-1328"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="jow-1g-jrC">
+            <objects>
+                <viewController id="eSu-39-O6U" customClass="GNNViewController" customModule="MimicOfGameCrazyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aZu-f1-ue2"/>
+                        <viewControllerLayoutGuide type="bottom" id="5qV-bY-0uK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Eb0-4A-Uh1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iba-xz-mfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2750" y="-1328"/>
+        </scene>
         <!--陪你去看電玩瘋-->
         <scene sceneID="UbT-8I-sfC">
             <objects>
                 <navigationController title="陪你去看電玩瘋" id="dF8-Ol-wxQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="電玩瘋" id="bZM-2P-mnO"/>
+                    <tabBarItem key="tabBarItem" title="看電玩瘋" id="bZM-2P-mnO">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="8"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-14"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oCr-0p-EFK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -111,8 +163,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="liveTableCell" id="F5c-6L-Kdw" customClass="LiveTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad2TableViewCell" id="1SD-Ce-cDi" customClass="AD2TableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1SD-Ce-cDi" id="rah-tD-bSq">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FKF-LB-Cmn">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="FKF-LB-Cmn" secondAttribute="bottom" id="5M3-Qb-gyU"/>
+                                        <constraint firstItem="FKF-LB-Cmn" firstAttribute="leading" secondItem="rah-tD-bSq" secondAttribute="leading" id="BS4-gc-kiU"/>
+                                        <constraint firstItem="FKF-LB-Cmn" firstAttribute="top" secondItem="rah-tD-bSq" secondAttribute="top" id="itX-6D-krJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="FKF-LB-Cmn" secondAttribute="trailing" id="r2Z-Df-VGv"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="AdImageView" destination="FKF-LB-Cmn" id="UDT-ec-CaP"/>
+                                    <outlet property="ContentView" destination="rah-tD-bSq" id="eVS-3M-qyh"/>
+                                    <segue destination="WNk-lU-3F7" kind="show" identifier="showAd2" id="b6p-UB-onW"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="liveTableCell" id="F5c-6L-Kdw" customClass="LiveTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F5c-6L-Kdw" id="M9E-4F-GSC">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -154,16 +230,23 @@
                             <outlet property="delegate" destination="2ZE-PR-27A" id="XGe-9P-goe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="2016年直播影片" id="HIJ-mD-Zhj"/>
+                    <navigationItem key="navigationItem" title="2016年直播影片" id="HIJ-mD-Zhj">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="直播" id="xD4-xd-Jnt"/>
+                        <barButtonItem key="rightBarButtonItem" title="GNN" id="Xkg-e3-YBJ">
+                            <connections>
+                                <segue destination="eSu-39-O6U" kind="show" identifier="GNN" id="c93-wi-rxo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9R2-vx-IV5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1296" y="-557"/>
         </scene>
-        <!--View Controller-->
+        <!--Live View Controller-->
         <scene sceneID="DNW-AV-Bv2">
             <objects>
-                <viewController id="siK-9I-4Im" sceneMemberID="viewController">
+                <viewController id="siK-9I-4Im" customClass="LiveViewController" customModule="MimicOfGameCrazyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cci-zP-9bQ"/>
                         <viewControllerLayoutGuide type="bottom" id="EdA-aw-Fgr"/>
@@ -178,6 +261,24 @@
             </objects>
             <point key="canvasLocation" x="2022" y="-557"/>
         </scene>
+        <!--Ad View Controller-->
+        <scene sceneID="Cfn-dX-e6u">
+            <objects>
+                <viewController id="WNk-lU-3F7" customClass="AdViewController" customModule="MimicOfGameCrazyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P6J-Cx-vPj"/>
+                        <viewControllerLayoutGuide type="bottom" id="DBB-lk-hcO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KEt-uy-TeD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="75T-gb-FXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2750" y="-557"/>
+        </scene>
         <!--遊戲製作團隊來訪-->
         <scene sceneID="IW4-E2-MuS">
             <objects>
@@ -187,8 +288,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameproducerTableCell" id="gDS-Z9-zeZ" customClass="GameProducerTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad3TableViewCell" id="Qeg-AP-Clp" customClass="AD3TableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qeg-AP-Clp" id="Qbk-EE-LxA">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xd8-ZE-EzP">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Xd8-ZE-EzP" secondAttribute="bottom" id="2uB-Wg-HTI"/>
+                                        <constraint firstItem="Xd8-ZE-EzP" firstAttribute="top" secondItem="Qbk-EE-LxA" secondAttribute="top" id="XE9-7M-80Z"/>
+                                        <constraint firstItem="Xd8-ZE-EzP" firstAttribute="leading" secondItem="Qbk-EE-LxA" secondAttribute="leading" id="b4i-FY-xQQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="Xd8-ZE-EzP" secondAttribute="trailing" id="cfX-DV-0Cj"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="AdImageView" destination="Xd8-ZE-EzP" id="hNk-UA-AhF"/>
+                                    <outlet property="ContentView" destination="Qbk-EE-LxA" id="oXd-h8-kA8"/>
+                                    <segue destination="WNk-lU-3F7" kind="show" identifier="showAd3" id="iOc-w5-uQE"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameproducerTableCell" id="gDS-Z9-zeZ" customClass="GameProducerTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gDS-Z9-zeZ" id="wDa-fa-eR9">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -230,16 +355,23 @@
                             <outlet property="delegate" destination="zGG-zN-UsA" id="m2x-Ca-Bue"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="遊戲製作團隊來訪" id="MR0-RD-fef"/>
+                    <navigationItem key="navigationItem" title="遊戲製作團隊來訪" id="MR0-RD-fef">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="直播" id="W5L-nt-4x1"/>
+                        <barButtonItem key="rightBarButtonItem" title="GNN" id="hIX-Mb-otW">
+                            <connections>
+                                <segue destination="eSu-39-O6U" kind="show" identifier="GNN" id="q92-kH-hWV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHZ-NC-98O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1292" y="198"/>
         </scene>
-        <!--View Controller-->
+        <!--Producer View Controller-->
         <scene sceneID="E3U-9L-MnE">
             <objects>
-                <viewController id="Fhg-AA-cEL" sceneMemberID="viewController">
+                <viewController id="Fhg-AA-cEL" customClass="ProducerViewController" customModule="MimicOfGameCrazyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HgJ-Sf-vx4"/>
                         <viewControllerLayoutGuide type="bottom" id="qAP-fd-9qH"/>
@@ -258,7 +390,10 @@
         <scene sceneID="SbR-0G-ofC">
             <objects>
                 <navigationController title="遊戲製作團隊來訪" id="LVS-4h-UjP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="最新遊戲" id="zHT-nP-fuU"/>
+                    <tabBarItem key="tabBarItem" title="最新遊戲" id="zHT-nP-fuU">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="8"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-14"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rzt-jc-Kuc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -280,8 +415,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VRGameTableCell" id="4M9-FB-mxk" customClass="VRGameTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad4TableViewCell" id="XoQ-FA-qYF" customClass="AD4TableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XoQ-FA-qYF" id="TxO-4C-imi">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S4i-DQ-dih">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="S4i-DQ-dih" secondAttribute="bottom" id="9jY-xF-MIk"/>
+                                        <constraint firstAttribute="trailing" secondItem="S4i-DQ-dih" secondAttribute="trailing" id="FHI-gq-nTu"/>
+                                        <constraint firstItem="S4i-DQ-dih" firstAttribute="top" secondItem="TxO-4C-imi" secondAttribute="top" id="Onl-bo-A7z"/>
+                                        <constraint firstItem="S4i-DQ-dih" firstAttribute="leading" secondItem="TxO-4C-imi" secondAttribute="leading" id="sFu-N2-Ne1"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="AdImageView" destination="S4i-DQ-dih" id="or4-8f-ZFI"/>
+                                    <outlet property="ContentView" destination="TxO-4C-imi" id="ljs-Sq-yVq"/>
+                                    <segue destination="WNk-lU-3F7" kind="show" identifier="showAd4" id="1mr-8S-AcN"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VRGameTableCell" id="4M9-FB-mxk" customClass="VRGameTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4M9-FB-mxk" id="8a1-ZS-SUv">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -323,7 +482,14 @@
                             <outlet property="delegate" destination="9k2-t4-vrl" id="z53-vH-x8k"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="VR遊戲直播" id="gVA-yK-eQJ"/>
+                    <navigationItem key="navigationItem" title="VR遊戲直播" id="gVA-yK-eQJ">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="直播" id="pqe-gI-ed8"/>
+                        <barButtonItem key="rightBarButtonItem" title="GNN" id="Zag-3l-rEi">
+                            <connections>
+                                <segue destination="eSu-39-O6U" kind="show" identifier="GNN" id="97e-OF-hGj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zHK-Ws-eRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -332,7 +498,7 @@
         <!--View Controller-->
         <scene sceneID="dkA-8N-z7e">
             <objects>
-                <viewController id="TMO-2Q-a0a" sceneMemberID="viewController">
+                <viewController id="TMO-2Q-a0a" customClass="VRViewController" customModule="MimicOfGameCrazyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zGo-Yq-aFd"/>
                         <viewControllerLayoutGuide type="bottom" id="7tL-R2-7Ec"/>
@@ -380,7 +546,10 @@
         <scene sceneID="gEc-al-fSa">
             <objects>
                 <navigationController id="cnx-XM-TUq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="更多" id="uGf-Fn-VsU"/>
+                    <tabBarItem key="tabBarItem" title="更多" id="uGf-Fn-VsU">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="8"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-14"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="78V-gg-JKi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -397,7 +566,10 @@
         <scene sceneID="8Wj-gF-pwU">
             <objects>
                 <navigationController title="VR遊戲直播" id="qZK-7a-WTh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="手機遊戲" id="ZDQ-xV-QSS"/>
+                    <tabBarItem key="tabBarItem" title="手機遊戲" id="ZDQ-xV-QSS">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="8"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-14"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ABo-3m-Un7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -414,7 +586,10 @@
         <scene sceneID="nLz-Ac-gwQ">
             <objects>
                 <navigationController title="2016年直播影片" id="tRI-rV-9Ua" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="直播回顧" id="okA-XP-Yj6"/>
+                    <tabBarItem key="tabBarItem" title="直播回顧" id="okA-XP-Yj6">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="8"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-14"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1xk-pN-3D4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -449,4 +624,8 @@
             <point key="canvasLocation" x="-248" y="198"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1mr-8S-AcN"/>
+        <segue reference="97e-OF-hGj"/>
+    </inferredMetricsTieBreakers>
 </document>

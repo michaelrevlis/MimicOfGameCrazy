@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6BA768CF1DEF150A00953DAC /* AD1TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA768CD1DEF150A00953DAC /* AD1TableViewCell.swift */; };
+		6BA768D21DEF2D6300953DAC /* AdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA768D11DEF2D6300953DAC /* AdGenerator.swift */; };
+		6BA768D41DEF3B4D00953DAC /* AD2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA768D31DEF3B4D00953DAC /* AD2TableViewCell.swift */; };
+		6BA768D61DEF3B5900953DAC /* AD3TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA768D51DEF3B5900953DAC /* AD3TableViewCell.swift */; };
+		6BA768D81DEF3B6400953DAC /* AD4TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA768D71DEF3B6400953DAC /* AD4TableViewCell.swift */; };
+		6BA768DA1DEF3D8600953DAC /* AdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA768D91DEF3D8600953DAC /* AdViewController.swift */; };
 		6BF71EA81DEEB2BF00AC27A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF71EA71DEEB2BF00AC27A4 /* AppDelegate.swift */; };
 		6BF71EAD1DEEB2BF00AC27A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF71EAB1DEEB2BF00AC27A4 /* Main.storyboard */; };
 		6BF71EB01DEEB2BF00AC27A4 /* MimicOfGameCrazyApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6BF71EAE1DEEB2BF00AC27A4 /* MimicOfGameCrazyApp.xcdatamodeld */; };
@@ -28,12 +34,19 @@
 		6BF71EE21DEEE5D400AC27A4 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF71EE11DEEE5D400AC27A4 /* LiveViewController.swift */; };
 		6BF71EE41DEEE5E100AC27A4 /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF71EE31DEEE5E100AC27A4 /* ProducerViewController.swift */; };
 		6BF71EE61DEEE5EB00AC27A4 /* VRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF71EE51DEEE5EB00AC27A4 /* VRViewController.swift */; };
+		6BF71EE91DEEF16200AC27A4 /* GNNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF71EE81DEEF16200AC27A4 /* GNNViewController.swift */; };
 		A3A942FEF6A2C159CF98D650 /* Pods_MimicOfGameCrazyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 645D79A00974F194FA4EE70D /* Pods_MimicOfGameCrazyApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2A45A3C1CE79470D3F51F4EE /* Pods-MimicOfGameCrazyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MimicOfGameCrazyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MimicOfGameCrazyApp/Pods-MimicOfGameCrazyApp.release.xcconfig"; sourceTree = "<group>"; };
 		645D79A00974F194FA4EE70D /* Pods_MimicOfGameCrazyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MimicOfGameCrazyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BA768CD1DEF150A00953DAC /* AD1TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AD1TableViewCell.swift; sourceTree = "<group>"; };
+		6BA768D11DEF2D6300953DAC /* AdGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdGenerator.swift; sourceTree = "<group>"; };
+		6BA768D31DEF3B4D00953DAC /* AD2TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AD2TableViewCell.swift; sourceTree = "<group>"; };
+		6BA768D51DEF3B5900953DAC /* AD3TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AD3TableViewCell.swift; sourceTree = "<group>"; };
+		6BA768D71DEF3B6400953DAC /* AD4TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AD4TableViewCell.swift; sourceTree = "<group>"; };
+		6BA768D91DEF3D8600953DAC /* AdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdViewController.swift; sourceTree = "<group>"; };
 		6BF71EA41DEEB2BF00AC27A4 /* MimicOfGameCrazyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MimicOfGameCrazyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF71EA71DEEB2BF00AC27A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BF71EAC1DEEB2BF00AC27A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -57,6 +70,7 @@
 		6BF71EE11DEEE5D400AC27A4 /* LiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
 		6BF71EE31DEEE5E100AC27A4 /* ProducerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerViewController.swift; sourceTree = "<group>"; };
 		6BF71EE51DEEE5EB00AC27A4 /* VRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VRViewController.swift; sourceTree = "<group>"; };
+		6BF71EE81DEEF16200AC27A4 /* GNNViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GNNViewController.swift; sourceTree = "<group>"; };
 		FF8BAB4684F874AF9547846E /* Pods-MimicOfGameCrazyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MimicOfGameCrazyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MimicOfGameCrazyApp/Pods-MimicOfGameCrazyApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +127,7 @@
 				6BF71EA71DEEB2BF00AC27A4 /* AppDelegate.swift */,
 				6BF71EAB1DEEB2BF00AC27A4 /* Main.storyboard */,
 				6BF71ED21DEEBA7400AC27A4 /* YoutubeManager.swift */,
+				6BA768D11DEF2D6300953DAC /* AdGenerator.swift */,
 				6BF71EC81DEEB64500AC27A4 /* GameCrazyTableViewController.swift */,
 				6BF71ECA1DEEB65100AC27A4 /* LiveTableViewController.swift */,
 				6BF71ECC1DEEB65A00AC27A4 /* GameProducerTableViewController.swift */,
@@ -137,6 +152,10 @@
 				6BF71ED81DEEDCA700AC27A4 /* LiveTableViewCell.swift */,
 				6BF71EDA1DEEDF2200AC27A4 /* GameProducerTableViewCell.swift */,
 				6BF71EDC1DEEE08D00AC27A4 /* VRGameTableViewCell.swift */,
+				6BA768CD1DEF150A00953DAC /* AD1TableViewCell.swift */,
+				6BA768D31DEF3B4D00953DAC /* AD2TableViewCell.swift */,
+				6BA768D51DEF3B5900953DAC /* AD3TableViewCell.swift */,
+				6BA768D71DEF3B6400953DAC /* AD4TableViewCell.swift */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -148,6 +167,8 @@
 				6BF71EE11DEEE5D400AC27A4 /* LiveViewController.swift */,
 				6BF71EE31DEEE5E100AC27A4 /* ProducerViewController.swift */,
 				6BF71EE51DEEE5EB00AC27A4 /* VRViewController.swift */,
+				6BF71EE81DEEF16200AC27A4 /* GNNViewController.swift */,
+				6BA768D91DEF3D8600953DAC /* AdViewController.swift */,
 			);
 			name = WebView;
 			sourceTree = "<group>";
@@ -278,18 +299,25 @@
 				6BF71ED11DEEB67200AC27A4 /* SettingTableViewController.swift in Sources */,
 				6BF71EE21DEEE5D400AC27A4 /* LiveViewController.swift in Sources */,
 				6BF71ECD1DEEB65A00AC27A4 /* GameProducerTableViewController.swift in Sources */,
+				6BF71EE91DEEF16200AC27A4 /* GNNViewController.swift in Sources */,
 				6BF71EBD1DEEB45B00AC27A4 /* TabBarController.swift in Sources */,
+				6BA768DA1DEF3D8600953DAC /* AdViewController.swift in Sources */,
 				6BF71EB01DEEB2BF00AC27A4 /* MimicOfGameCrazyApp.xcdatamodeld in Sources */,
 				6BF71EDD1DEEE08D00AC27A4 /* VRGameTableViewCell.swift in Sources */,
+				6BA768D61DEF3B5900953DAC /* AD3TableViewCell.swift in Sources */,
 				6BF71EE01DEEE5B000AC27A4 /* CrazyViewController.swift in Sources */,
+				6BA768D41DEF3B4D00953DAC /* AD2TableViewCell.swift in Sources */,
 				6BF71EE61DEEE5EB00AC27A4 /* VRViewController.swift in Sources */,
 				6BF71EA81DEEB2BF00AC27A4 /* AppDelegate.swift in Sources */,
 				6BF71EDB1DEEDF2200AC27A4 /* GameProducerTableViewCell.swift in Sources */,
 				6BF71ED71DEECB2300AC27A4 /* GameCrazyTableViewCell.swift in Sources */,
 				6BF71EE41DEEE5E100AC27A4 /* ProducerViewController.swift in Sources */,
 				6BF71ED51DEEC6F300AC27A4 /* Objects.swift in Sources */,
+				6BA768CF1DEF150A00953DAC /* AD1TableViewCell.swift in Sources */,
 				6BF71ED31DEEBA7400AC27A4 /* YoutubeManager.swift in Sources */,
 				6BF71ED91DEEDCA700AC27A4 /* LiveTableViewCell.swift in Sources */,
+				6BA768D21DEF2D6300953DAC /* AdGenerator.swift in Sources */,
+				6BA768D81DEF3B6400953DAC /* AD4TableViewCell.swift in Sources */,
 				6BF71ECB1DEEB65100AC27A4 /* LiveTableViewController.swift in Sources */,
 				6BF71EC91DEEB64500AC27A4 /* GameCrazyTableViewController.swift in Sources */,
 			);

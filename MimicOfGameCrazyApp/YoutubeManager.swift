@@ -10,10 +10,6 @@ import UIKit
 import Foundation
 import youtube_ios_player_helper
 
-enum PlaylistType: Int {
-    case GameCrazy, Live, GameProducer, VRGame
-}
-
 class YoutuberManager {
     
     static let shared = YoutuberManager()
@@ -24,8 +20,8 @@ class YoutuberManager {
     private let 遊戲製作團隊來訪 = "PLDB-qS0bMlKE8y24f8HOx1VJSmgdyk7g3"
     private let VR遊戲直播 = "PLDB-qS0bMlKFpi_WYPfrEQBsJkgOZSdnZ"
     
-    weak var gamecrazyDelegate: YoutuberManagerGameCrazyDelegate?
-    weak var liveDelegate: YoutuberManagerLiveDelegate?
+    weak var gamecrazyDelegate: YoutuberManagerDelegate?
+    weak var liveDelegate: YoutuberManagerDelegate?
     weak var gameproducerDelegate: YoutuberManagerDelegate?
     weak var vrgameDelegate: YoutuberManagerDelegate?
     
@@ -60,16 +56,16 @@ class YoutuberManager {
         
         switch playlistType {
         case .GameCrazy:
-            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(陪你去看電玩瘋)&key=\(apiKey)&maxResults=\(10)"
+            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(陪你去看電玩瘋)&key=\(apiKey)&maxResults=\(50)"
             
         case .Live:
-            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(直播影片)&key=\(apiKey)&maxResults=\(10)"
+            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(直播影片)&key=\(apiKey)&maxResults=\(50)"
             
         case .GameProducer:
-            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(遊戲製作團隊來訪)&key=\(apiKey)&maxResults=\(10)"
+            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(遊戲製作團隊來訪)&key=\(apiKey)&maxResults=\(50)"
             
         case .VRGame:
-            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(VR遊戲直播)&key=\(apiKey)&maxResults=\(10)"
+            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(VR遊戲直播)&key=\(apiKey)&maxResults=\(50)"
         }
 
         
@@ -86,10 +82,10 @@ class YoutuberManager {
             if HTTPStatusCode == 200 && error == nil {
                 do {
                     guard let  resultsDict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary,
-                                    items = resultsDict["items"] as AnyObject!
+                                    items = resultsDict["items"] as? NSArray
                         else { fatalError() }
                     
-                    for i in 0...9 {
+                    for i in 0...items.count - 1 {
                         guard let  itemDict = items[i] as? NSDictionary,
                                         snippet = itemDict["snippet"] as? NSDictionary,
                                         title = snippet["title"] as? String,
@@ -106,12 +102,12 @@ class YoutuberManager {
                     switch playlistType {
                     case .GameCrazy:
                         dispatch_async(dispatch_get_main_queue(), {
-                            self.gamecrazyDelegate?.gamecrazyManager(self, playlistResult: playlistResult)
+                            self.gamecrazyDelegate?.manager(self, playlistResult: playlistResult)
                         })
                         
                     case .Live:
                         dispatch_async(dispatch_get_main_queue(), {
-                            self.liveDelegate?.liveManager(self, playlistResult: playlistResult)
+                            self.liveDelegate?.manager(self, playlistResult: playlistResult)
                         })
                         
                     case .GameProducer:
@@ -138,14 +134,6 @@ class YoutuberManager {
 }
 
 
-
-protocol YoutuberManagerGameCrazyDelegate: class {
-    func gamecrazyManager(manager: YoutuberManager, playlistResult: [Playlist])
-}
-
-protocol YoutuberManagerLiveDelegate: class {
-    func liveManager(manager: YoutuberManager, playlistResult: [Playlist])
-}
 
 protocol YoutuberManagerDelegate: class {
     func manager(manager: YoutuberManager, playlistResult: [Playlist])

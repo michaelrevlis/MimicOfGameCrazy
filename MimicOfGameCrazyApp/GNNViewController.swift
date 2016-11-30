@@ -1,5 +1,5 @@
 //
-//  CrazyViewController.swift
+//  GNNViewController.swift
 //  MimicOfGameCrazyApp
 //
 //  Created by MichaelRevlis on 2016/11/30.
@@ -9,15 +9,16 @@
 import UIKit
 import WebKit
 
-class CrazyViewController: UIViewController, WKNavigationDelegate {
+class GNNViewController: UIViewController, WKNavigationDelegate {
     
     var WebView = WKWebView()
     var myActivityIndicator = UIActivityIndicatorView()
-    let urlString = "https://www.youtube.com/watch?v="
-    var videoId = String()
+    let urlString = "https://gnn.gamer.com.tw/"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        self.navigationController?.navigationBarHidden = true
         
         let fullScreenSize = UIScreen.mainScreen().bounds.size
         
@@ -32,8 +33,7 @@ class CrazyViewController: UIViewController, WKNavigationDelegate {
         
         self.view.addSubview(myActivityIndicator)
         
-        let fullUrlString = urlString + videoId
-        guard let url = NSURL(string: fullUrlString) else {fatalError()}
+        guard let url = NSURL(string: urlString) else {fatalError()}
         let urlRequest = NSURLRequest(URL: url)
         WebView.loadRequest(urlRequest)
     }
@@ -47,6 +47,7 @@ class CrazyViewController: UIViewController, WKNavigationDelegate {
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         myActivityIndicator.stopAnimating()
     }
+    
     
     /*
      // MARK: - Navigation
