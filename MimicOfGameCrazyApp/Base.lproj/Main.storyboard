@@ -1,25 +1,260 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Us5-if-YGP">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--電玩瘋-->
+        <scene sceneID="MuS-tF-Dhf">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController storyboardIdentifier="GameCrazyTableViewController" title="電玩瘋" id="cQv-Kf-hiV" customClass="GameCrazyTableViewController" customModule="MimicOfGameCrazyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="013-Pt-MMB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="CLV-Vb-HPx">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CLV-Vb-HPx" id="pbk-HL-oTc">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cQv-Kf-hiV" id="ToY-fj-Fso"/>
+                            <outlet property="delegate" destination="cQv-Kf-hiV" id="cvI-SX-lrn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="電玩瘋" id="HQZ-g6-0UF"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j7N-eU-ej5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1292" y="-1328"/>
+        </scene>
+        <!--電玩瘋-->
+        <scene sceneID="UbT-8I-sfC">
+            <objects>
+                <navigationController id="dF8-Ol-wxQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="電玩瘋" id="bZM-2P-mnO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oCr-0p-EFK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cQv-Kf-hiV" kind="relationship" relationship="rootViewController" id="t3n-3I-g4W"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ojh-vS-Lcr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="476" y="-1328"/>
+        </scene>
+        <!--直播回顧-->
+        <scene sceneID="BwI-Zu-Kze">
+            <objects>
+                <tableViewController title="直播回顧" id="2ZE-PR-27A" customClass="LiveTableViewController" customModule="MimicOfGameCrazyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gQG-6C-vto">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="F5c-6L-Kdw">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F5c-6L-Kdw" id="M9E-4F-GSC">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2ZE-PR-27A" id="VHD-OA-BOM"/>
+                            <outlet property="delegate" destination="2ZE-PR-27A" id="XGe-9P-goe"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="直播回顧" id="HIJ-mD-Zhj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9R2-vx-IV5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1296" y="-557"/>
+        </scene>
+        <!--最新遊戲-->
+        <scene sceneID="IW4-E2-MuS">
+            <objects>
+                <tableViewController title="最新遊戲" id="zGG-zN-UsA" customClass="NewGameTableViewController" customModule="MimicOfGameCrazyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xz8-pA-Itd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gDS-Z9-zeZ">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gDS-Z9-zeZ" id="wDa-fa-eR9">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="zGG-zN-UsA" id="KX8-Fd-zIi"/>
+                            <outlet property="delegate" destination="zGG-zN-UsA" id="m2x-Ca-Bue"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="最新遊戲" id="MR0-RD-fef"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wHZ-NC-98O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1292" y="198"/>
+        </scene>
+        <!--最新遊戲-->
+        <scene sceneID="SbR-0G-ofC">
+            <objects>
+                <navigationController id="LVS-4h-UjP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="最新遊戲" id="zHT-nP-fuU"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rzt-jc-Kuc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zGG-zN-UsA" kind="relationship" relationship="rootViewController" id="R4K-QK-4T1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pha-mK-fkg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="476" y="198"/>
+        </scene>
+        <!--手機遊戲-->
+        <scene sceneID="rJ9-kT-hGD">
+            <objects>
+                <tableViewController title="手機遊戲" id="9k2-t4-vrl" customClass="PhoneGameTableViewController" customModule="MimicOfGameCrazyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iE7-QG-0lU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4M9-FB-mxk">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4M9-FB-mxk" id="8a1-ZS-SUv">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9k2-t4-vrl" id="2yn-yS-d7O"/>
+                            <outlet property="delegate" destination="9k2-t4-vrl" id="z53-vH-x8k"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="手機遊戲" id="gVA-yK-eQJ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zHK-Ws-eRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1292" y="921"/>
+        </scene>
+        <!--更多-->
+        <scene sceneID="uoE-9B-LfY">
+            <objects>
+                <tableViewController title="更多" id="UhH-ql-N6a" customClass="SettingTableViewController" customModule="MimicOfGameCrazyApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tQK-o8-PKQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2wI-sy-0wy">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2wI-sy-0wy" id="yuB-ZR-VtQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="UhH-ql-N6a" id="Pdz-e2-Uvh"/>
+                            <outlet property="delegate" destination="UhH-ql-N6a" id="gHl-dq-zgD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="更多" id="vvV-PV-7BL"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dJ2-LP-ihy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1292" y="1649"/>
+        </scene>
+        <!--更多-->
+        <scene sceneID="gEc-al-fSa">
+            <objects>
+                <navigationController id="cnx-XM-TUq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="更多" id="uGf-Fn-VsU"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="78V-gg-JKi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="UhH-ql-N6a" kind="relationship" relationship="rootViewController" id="9iF-6A-8Wf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i6D-eF-a58" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="476" y="1649"/>
+        </scene>
+        <!--手機遊戲-->
+        <scene sceneID="8Wj-gF-pwU">
+            <objects>
+                <navigationController id="qZK-7a-WTh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="手機遊戲" id="ZDQ-xV-QSS"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ABo-3m-Un7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9k2-t4-vrl" kind="relationship" relationship="rootViewController" id="wKn-sf-evk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0B8-hv-jOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="476" y="921"/>
+        </scene>
+        <!--直播回顧-->
+        <scene sceneID="nLz-Ac-gwQ">
+            <objects>
+                <navigationController id="tRI-rV-9Ua" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="直播回顧" id="okA-XP-Yj6"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1xk-pN-3D4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2ZE-PR-27A" kind="relationship" relationship="rootViewController" id="CUd-AK-44m"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Snk-BU-A9p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="476" y="-557"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="y7k-fY-1hI">
+            <objects>
+                <tabBarController id="Us5-if-YGP" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="JKL-hG-Igf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="dF8-Ol-wxQ" kind="relationship" relationship="viewControllers" id="NjN-HV-rfT"/>
+                        <segue destination="tRI-rV-9Ua" kind="relationship" relationship="viewControllers" id="5Xa-ud-f9W"/>
+                        <segue destination="LVS-4h-UjP" kind="relationship" relationship="viewControllers" id="wDE-um-6lj"/>
+                        <segue destination="qZK-7a-WTh" kind="relationship" relationship="viewControllers" id="3PS-oj-WDY"/>
+                        <segue destination="cnx-XM-TUq" kind="relationship" relationship="viewControllers" id="hjC-KW-u83"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yMc-FJ-KrR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-248" y="198"/>
         </scene>
     </scenes>
 </document>
