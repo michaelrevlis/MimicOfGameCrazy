@@ -19,9 +19,12 @@
 		6BF71ECF1DEEB66A00AC27A4 /* PhoneGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF71ECE1DEEB66A00AC27A4 /* PhoneGameTableViewController.swift */; };
 		6BF71ED11DEEB67200AC27A4 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF71ED01DEEB67200AC27A4 /* SettingTableViewController.swift */; };
 		6BF71ED31DEEBA7400AC27A4 /* YoutubeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF71ED21DEEBA7400AC27A4 /* YoutubeManager.swift */; };
+		A3A942FEF6A2C159CF98D650 /* Pods_MimicOfGameCrazyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 645D79A00974F194FA4EE70D /* Pods_MimicOfGameCrazyApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A45A3C1CE79470D3F51F4EE /* Pods-MimicOfGameCrazyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MimicOfGameCrazyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MimicOfGameCrazyApp/Pods-MimicOfGameCrazyApp.release.xcconfig"; sourceTree = "<group>"; };
+		645D79A00974F194FA4EE70D /* Pods_MimicOfGameCrazyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MimicOfGameCrazyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF71EA41DEEB2BF00AC27A4 /* MimicOfGameCrazyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MimicOfGameCrazyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF71EA71DEEB2BF00AC27A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BF71EAC1DEEB2BF00AC27A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		6BF71ECE1DEEB66A00AC27A4 /* PhoneGameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneGameTableViewController.swift; sourceTree = "<group>"; };
 		6BF71ED01DEEB67200AC27A4 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		6BF71ED21DEEBA7400AC27A4 /* YoutubeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeManager.swift; sourceTree = "<group>"; };
+		FF8BAB4684F874AF9547846E /* Pods-MimicOfGameCrazyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MimicOfGameCrazyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MimicOfGameCrazyApp/Pods-MimicOfGameCrazyApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +47,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3A942FEF6A2C159CF98D650 /* Pods_MimicOfGameCrazyApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27AC0DDF35F95AF1BEDBD1F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				645D79A00974F194FA4EE70D /* Pods_MimicOfGameCrazyApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3207884E934B6A1AEB4AABA0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FF8BAB4684F874AF9547846E /* Pods-MimicOfGameCrazyApp.debug.xcconfig */,
+				2A45A3C1CE79470D3F51F4EE /* Pods-MimicOfGameCrazyApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6BF71E9B1DEEB2BF00AC27A4 = {
 			isa = PBXGroup;
 			children = (
 				6BF71EA61DEEB2BF00AC27A4 /* MimicOfGameCrazyApp */,
 				6BF71EA51DEEB2BF00AC27A4 /* Products */,
+				3207884E934B6A1AEB4AABA0 /* Pods */,
+				27AC0DDF35F95AF1BEDBD1F7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,9 +116,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BF71EB91DEEB2BF00AC27A4 /* Build configuration list for PBXNativeTarget "MimicOfGameCrazyApp" */;
 			buildPhases = (
+				8AC0E6DD085C09E82D738C3D /* [CP] Check Pods Manifest.lock */,
 				6BF71EA01DEEB2BF00AC27A4 /* Sources */,
 				6BF71EA11DEEB2BF00AC27A4 /* Frameworks */,
 				6BF71EA21DEEB2BF00AC27A4 /* Resources */,
+				E92AC5A38E1FAA3792B9F472 /* [CP] Embed Pods Frameworks */,
+				0B1F11FBF257957E4E6D21F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -150,6 +177,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B1F11FBF257957E4E6D21F1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MimicOfGameCrazyApp/Pods-MimicOfGameCrazyApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AC0E6DD085C09E82D738C3D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E92AC5A38E1FAA3792B9F472 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MimicOfGameCrazyApp/Pods-MimicOfGameCrazyApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6BF71EA01DEEB2BF00AC27A4 /* Sources */ = {
@@ -275,6 +350,7 @@
 		};
 		6BF71EBA1DEEB2BF00AC27A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF8BAB4684F874AF9547846E /* Pods-MimicOfGameCrazyApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MimicOfGameCrazyApp/Info.plist;
@@ -286,6 +362,7 @@
 		};
 		6BF71EBB1DEEB2BF00AC27A4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A45A3C1CE79470D3F51F4EE /* Pods-MimicOfGameCrazyApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MimicOfGameCrazyApp/Info.plist;
@@ -314,6 +391,7 @@
 				6BF71EBB1DEEB2BF00AC27A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
