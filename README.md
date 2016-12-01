@@ -1,7 +1,7 @@
 # MimicOfGameCrazy
-MimicOfGameCrazy is a self-practicing project which aims to build a mimic of 巴哈姆特's app - 電玩瘋.
-All the content and copy rights belongs to 巴哈姆特.
-You can find the origin 電玩瘋 at here: https://m.gamer.com.tw/baha_app_detail.php?app=gamecrazy
+1. MimicOfGameCrazy is a self-practicing project which aims to build a mimic of 巴哈姆特's app - 電玩瘋.
+2. All the content and copy rights belongs to 巴哈姆特.
+3. You can find the origin 電玩瘋 at here: https://m.gamer.com.tw/baha_app_detail.php?app=gamecrazy
 
 # Feature
 1. Browsing Youtube playlists provided by gamer.
