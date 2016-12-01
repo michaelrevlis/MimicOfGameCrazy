@@ -12,8 +12,9 @@ You can find the origin 電玩瘋 at here: https://m.gamer.com.tw/baha_app_detai
 
 # ScreenShot
 ![](https://github.com/michaelrevlis/MimicOfGameCrazy/blob/master/screenshot/1_rootVC.png)
-![](https://github.com/michaelrevlis/Bond/blob/master/screenshot/Bond_thread.png)
-![](https://github.com/michaelrevlis/Bond/blob/master/screenshot/Bond_singlebond.png)
-![](https://github.com/michaelrevlis/Bond/blob/master/screenshot/Bond_screenlock.png)
-![](https://github.com/michaelrevlis/Bond/blob/master/screenshot/Bond_edit1.png)
-![](https://github.com/michaelrevlis/Bond/blob/master/screenshot/Bond_edit2.png)
+![](https://github.com/michaelrevlis/MimicOfGameCrazy/blob/master/screenshot/2_single_video.png)
+![](https://github.com/michaelrevlis/MimicOfGameCrazy/blob/master/screenshot/3_playvideo.png)
+![](https://github.com/michaelrevlis/MimicOfGameCrazy/blob/master/screenshot/6_GNN.png)
+![](https://github.com/michaelrevlis/MimicOfGameCrazy/blob/master/screenshot/4_search.png)
+![](https://github.com/michaelrevlis/MimicOfGameCrazy/blob/master/screenshot/5_search_result.png)
+
