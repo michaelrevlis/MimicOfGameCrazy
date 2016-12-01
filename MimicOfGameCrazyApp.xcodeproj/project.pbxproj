@@ -103,6 +103,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6BA768DD1DEFCE5E00953DAC /* TableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BF71EC81DEEB64500AC27A4 /* GameCrazyTableViewController.swift */,
+				6BF71ECA1DEEB65100AC27A4 /* LiveTableViewController.swift */,
+				6BF71ECC1DEEB65A00AC27A4 /* GameProducerTableViewController.swift */,
+				6BF71ECE1DEEB66A00AC27A4 /* VRGameTableViewController.swift */,
+				6BF71ED01DEEB67200AC27A4 /* SettingTableViewController.swift */,
+			);
+			name = TableViewController;
+			sourceTree = "<group>";
+		};
 		6BF71E9B1DEEB2BF00AC27A4 = {
 			isa = PBXGroup;
 			children = (
@@ -128,13 +140,9 @@
 				6BF71EAB1DEEB2BF00AC27A4 /* Main.storyboard */,
 				6BF71ED21DEEBA7400AC27A4 /* YoutubeManager.swift */,
 				6BA768D11DEF2D6300953DAC /* AdGenerator.swift */,
-				6BF71EC81DEEB64500AC27A4 /* GameCrazyTableViewController.swift */,
-				6BF71ECA1DEEB65100AC27A4 /* LiveTableViewController.swift */,
-				6BF71ECC1DEEB65A00AC27A4 /* GameProducerTableViewController.swift */,
-				6BF71ECE1DEEB66A00AC27A4 /* VRGameTableViewController.swift */,
-				6BF71ED01DEEB67200AC27A4 /* SettingTableViewController.swift */,
-				6BF71EBC1DEEB45B00AC27A4 /* TabBarController.swift */,
 				6BF71ED41DEEC6F300AC27A4 /* Objects.swift */,
+				6BF71EBC1DEEB45B00AC27A4 /* TabBarController.swift */,
+				6BA768DD1DEFCE5E00953DAC /* TableViewController */,
 				6BF71EDE1DEEE2A500AC27A4 /* TableViewCell */,
 				6BF71EE71DEEE5F300AC27A4 /* WebView */,
 				6BF71EB11DEEB2BF00AC27A4 /* Assets.xcassets */,
@@ -208,6 +216,7 @@
 				TargetAttributes = {
 					6BF71EA31DEEB2BF00AC27A4 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 36725LRQSQ;
 					};
 				};
 			};
@@ -433,10 +442,13 @@
 			baseConfigurationReference = FF8BAB4684F874AF9547846E /* Pods-MimicOfGameCrazyApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MimicOfGameCrazyApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mir.MimicOfGameCrazyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -445,10 +457,13 @@
 			baseConfigurationReference = 2A45A3C1CE79470D3F51F4EE /* Pods-MimicOfGameCrazyApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MimicOfGameCrazyApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mir.MimicOfGameCrazyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

@@ -10,20 +10,27 @@ import UIKit
 
 class LiveTableViewController: UITableViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     private var playlistResult = [Playlist]()
     private var sections: [Section] = [.AD, .Playlist]
     private var ad = [AD]()
+    private var searchResult = [Playlist]()
+    private var inSearchMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         YoutuberManager.shared.liveDelegate = self
-        
+        YoutuberManager.shared.liveSearchDelegate = self
         YoutuberManager.shared.getPlaylistData(.Live)
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 96
         
+        searchBar.delegate = self
+        
+        self.tableView.setContentOffset(CGPoint(x: 0.0, y: 44.0), animated: true)
     }
     
     
@@ -84,7 +91,12 @@ class LiveTableViewController: UITableViewController {
         case .Playlist:
             let cell = tableView.dequeueReusableCellWithIdentifier("liveTableCell", forIndexPath: indexPath) as! LiveTableViewCell
             
-            let index = self.playlistResult[indexPath.row]
+            let index: Playlist
+            if self.searchResult.count == 0 {
+                index = self.playlistResult[indexPath.row]
+            } else {
+                index = self.searchResult[indexPath.row]
+            }
             cell.TitleLabel.text = index.title
             guard let imageUrl = NSURL(string: index.thumbnailUrl)
                 else { fatalError() }
@@ -104,7 +116,12 @@ class LiveTableViewController: UITableViewController {
                 let webVC = segue.destinationViewController as! LiveViewController
                 
                 if let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell) {
-                    let videoId = playlistResult[indexPath.row].videoId
+                    let videoId: String
+                    if searchResult.count == 0 {
+                        videoId = playlistResult[indexPath.row].videoId
+                    } else {
+                        videoId = searchResult[indexPath.row].videoId
+                    }
                     webVC.videoId = videoId
                 }
                 
@@ -128,6 +145,54 @@ extension LiveTableViewController: YoutuberManagerDelegate {
     }
 }
 
+extension LiveTableViewController: YoutuberManagerSearchDelegate {
+    func manager(manager: YoutuberManager, searchResult: [Playlist]) {
+        self.searchResult = searchResult
+        self.tableView.reloadData()
+    }
+}
+
+
+extension LiveTableViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            inSearchMode = false
+            view.endEditing(true)
+            self.searchResult.removeAll()
+            tableView.reloadData()
+        }
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            inSearchMode = false
+            view.endEditing(true)
+            self.searchResult.removeAll()
+            tableView.reloadData()
+        } else {
+            inSearchMode = true
+            let searchKeyWord = searchBar.text!.lowercaseString
+            YoutuberManager.shared.searchVideo(searchKeyWord, vc: .Live)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+        inSearchMode = false
+        view.endEditing(true)
+    }
+}
 
 
 

@@ -15,6 +15,7 @@ class YoutuberManager {
     static let shared = YoutuberManager()
     
     private let apiKey = "AIzaSyBXKpFxcL9A6yyJ_FaZb0jyHsASFjUhH1Q"
+    private let channelId = "UC4c-wTOqEID-_vH4MhNs06w"
     private let 陪你去看電玩瘋 = "PLDB-qS0bMlKEKf9HmaDvEHedn5n059RfB"
     private let 直播影片 = "PLDB-qS0bMlKGUbSK7LWnOltKSyNVV6XWZ"
     private let 遊戲製作團隊來訪 = "PLDB-qS0bMlKE8y24f8HOx1VJSmgdyk7g3"
@@ -24,10 +25,14 @@ class YoutuberManager {
     weak var liveDelegate: YoutuberManagerDelegate?
     weak var gameproducerDelegate: YoutuberManagerDelegate?
     weak var vrgameDelegate: YoutuberManagerDelegate?
+    weak var gamecrazySearchDelegate: YoutuberManagerSearchDelegate?
+    weak var liveSearchDelegate: YoutuberManagerSearchDelegate?
+    weak var gameproducerSearchDelegate: YoutuberManagerSearchDelegate?
+    weak var vrgameSearchDelegate: YoutuberManagerSearchDelegate?
     
-    //////////////////////////////
-    //// GameCrazy ////
-    //////////////////////////////
+    //////////////////////
+    //// Playlist ////
+    /////////////////////
     
     typealias PerformGetRequest = (data: NSData?, HTTPStatusCode: Int, error: NSError?) -> Void
     
@@ -131,6 +136,81 @@ class YoutuberManager {
             }
         })
     }
+    
+    ////////////////////////////////
+    //// Search Video ////
+    ///////////////////////////////
+
+    func searchVideo(keyword: String, vc: PlaylistType) {
+        let urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=\(keyword)&channelId=\(channelId)&maxResults=\(20)&type=video&key=\(apiKey)"
+        
+        guard let searchUrl = NSURL(string: urlString)
+            else {
+                print("Error: NSURL gamecrazyUrl")
+                return
+        }
+        
+        performGetRequest(searchUrl, completion: { (data, HTTPStatusCode, error) -> Void in
+            
+            var searchResult = [Playlist]()
+            
+            if HTTPStatusCode == 200 && error == nil {
+                do {
+                    guard let  resultsDict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary,
+                        items = resultsDict["items"] as? NSArray
+                        else { fatalError() }
+                    
+                    guard items.count != 0 else { return }
+                    
+                    for i in 0...items.count - 1 {
+                        guard let  itemDict = items[i] as? NSDictionary,
+                                        snippet = itemDict["snippet"] as? NSDictionary,
+                                        title = snippet["title"] as? String,
+                                        thumbnail = snippet["thumbnails"] as? NSDictionary,
+                                        defaults = thumbnail["default"] as? NSDictionary,
+                                        thumbnailUrl = defaults["url"] as? String,
+                                        resourceId = itemDict["id"] as? NSDictionary,
+                                        videoId = resourceId["videoId"] as? String
+                            else { fatalError() }
+                        
+                        searchResult.append(Playlist(title: title, thumbnailUrl: thumbnailUrl, videoId: videoId))
+                    }
+                    
+                    switch vc {
+                    case .GameCrazy:
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.gamecrazySearchDelegate?.manager(self, searchResult: searchResult)
+                        })
+                        
+                    case .Live:
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.liveSearchDelegate?.manager(self, searchResult: searchResult)
+                        })
+                        
+                    case .GameProducer:
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.gameproducerSearchDelegate?.manager(self, searchResult: searchResult)
+                        })
+                        
+                    case .VRGame:
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.vrgameSearchDelegate?.manager(self, searchResult: searchResult)
+                        })
+                    }
+                    
+                } catch {
+                    print(error)
+                }
+                
+            } else {
+                print("HTTP status code: \(HTTPStatusCode)")
+                print("Error while loading channel details: \(error)")
+            }
+        })
+
+    }
+    
+    
 }
 
 
@@ -139,7 +219,9 @@ protocol YoutuberManagerDelegate: class {
     func manager(manager: YoutuberManager, playlistResult: [Playlist])
 }
 
-
+protocol YoutuberManagerSearchDelegate: class {
+    func manager(manager: YoutuberManager, searchResult: [Playlist])
+}
 
 
 

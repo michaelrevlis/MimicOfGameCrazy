@@ -13,9 +13,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="y0d-Fa-PmM">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad1TableViewCell" id="wB1-sY-NYh" customClass="AD1TableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wB1-sY-NYh" id="uCc-tt-NRQ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -39,7 +44,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gamecrazyTableCell" id="CLV-Vb-HPx" customClass="GameCrazyTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="180" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CLV-Vb-HPx" id="pbk-HL-oTc">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -93,6 +98,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="y0d-Fa-PmM" id="Dqd-za-G0v"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7N-eU-ej5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -162,9 +170,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="A14-Di-SuE">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad2TableViewCell" id="1SD-Ce-cDi" customClass="AD2TableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1SD-Ce-cDi" id="rah-tD-bSq">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -188,7 +201,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="liveTableCell" id="F5c-6L-Kdw" customClass="LiveTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="180" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F5c-6L-Kdw" id="M9E-4F-GSC">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -238,6 +251,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="A14-Di-SuE" id="8dm-tL-4IP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9R2-vx-IV5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -287,9 +303,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="tuo-3N-SNZ">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad3TableViewCell" id="Qeg-AP-Clp" customClass="AD3TableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qeg-AP-Clp" id="Qbk-EE-LxA">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -313,7 +334,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameproducerTableCell" id="gDS-Z9-zeZ" customClass="GameProducerTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="180" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gDS-Z9-zeZ" id="wDa-fa-eR9">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -363,6 +384,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="tuo-3N-SNZ" id="p8s-IM-NkY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHZ-NC-98O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -414,9 +438,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="YwU-y0-e5c">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad4TableViewCell" id="XoQ-FA-qYF" customClass="AD4TableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XoQ-FA-qYF" id="TxO-4C-imi">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -440,7 +469,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VRGameTableCell" id="4M9-FB-mxk" customClass="VRGameTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="180" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4M9-FB-mxk" id="8a1-ZS-SUv">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -490,6 +519,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="YwU-y0-e5c" id="sUU-vM-fWO"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zHK-Ws-eRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -546,7 +578,7 @@
         <scene sceneID="gEc-al-fSa">
             <objects>
                 <navigationController id="cnx-XM-TUq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="更多" id="uGf-Fn-VsU">
+                    <tabBarItem key="tabBarItem" enabled="NO" title="更多" id="uGf-Fn-VsU">
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="8"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-14"/>
                     </tabBarItem>

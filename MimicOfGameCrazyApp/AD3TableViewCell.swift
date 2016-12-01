@@ -22,7 +22,7 @@ class AD3TableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        AdImageView.contentMode = .ScaleAspectFill
+        AdImageView.contentMode = .ScaleToFill
         
         self.ContentView.addSubview(AdImageView)
     }

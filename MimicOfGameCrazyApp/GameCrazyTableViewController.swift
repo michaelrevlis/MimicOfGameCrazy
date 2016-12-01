@@ -9,21 +9,28 @@
 import UIKit
 
 class GameCrazyTableViewController: UITableViewController {
+    
+    @IBOutlet weak var searchBar: UISearchBar!
 
     private var playlistResult = [Playlist]()
     private var sections: [Section] = [.AD, .Playlist]
     private var ad = [AD]()
+    private var searchResult = [Playlist]()
+    private var inSearchMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         YoutuberManager.shared.gamecrazyDelegate = self
-        
+        YoutuberManager.shared.gamecrazySearchDelegate = self
         YoutuberManager.shared.getPlaylistData(.GameCrazy)
 
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 96
+        
+        searchBar.delegate = self
 
+        self.tableView.setContentOffset(CGPoint(x: 0.0, y: 44.0), animated: true)
     }
 
     
@@ -84,7 +91,12 @@ class GameCrazyTableViewController: UITableViewController {
         case .Playlist:
             let cell = tableView.dequeueReusableCellWithIdentifier("gamecrazyTableCell", forIndexPath: indexPath) as! GameCrazyTableViewCell
             
-            let index = self.playlistResult[indexPath.row]
+            let index: Playlist
+            if self.searchResult.count == 0 {
+                index = self.playlistResult[indexPath.row]
+            } else {
+                index = self.searchResult[indexPath.row]
+            }
             cell.TitleLabel.text = index.title
             guard let imageUrl = NSURL(string: index.thumbnailUrl)
                 else { fatalError() }
@@ -104,7 +116,12 @@ class GameCrazyTableViewController: UITableViewController {
                 let webVC = segue.destinationViewController as! CrazyViewController
                 
                 if let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell) {
-                    let videoId = playlistResult[indexPath.row].videoId
+                    let videoId: String
+                    if searchResult.count == 0 {
+                        videoId = playlistResult[indexPath.row].videoId
+                    } else {
+                        videoId = searchResult[indexPath.row].videoId
+                    }
                     webVC.videoId = videoId
                 }
                 
@@ -129,6 +146,55 @@ extension GameCrazyTableViewController: YoutuberManagerDelegate {
     }
 }
 
+
+extension GameCrazyTableViewController: YoutuberManagerSearchDelegate {
+    func manager(manager: YoutuberManager, searchResult: [Playlist]) {
+        self.searchResult = searchResult
+        self.tableView.reloadData()
+    }
+}
+
+
+extension GameCrazyTableViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            inSearchMode = false
+            view.endEditing(true)
+            self.searchResult.removeAll()
+            tableView.reloadData()
+        }
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            inSearchMode = false
+            view.endEditing(true)
+            self.searchResult.removeAll()
+            tableView.reloadData()
+        } else {
+            inSearchMode = true
+            let searchKeyWord = searchBar.text!.lowercaseString
+            YoutuberManager.shared.searchVideo(searchKeyWord, vc: .GameCrazy)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+        inSearchMode = false
+        view.endEditing(true)
+    }
+}
 
 
 
