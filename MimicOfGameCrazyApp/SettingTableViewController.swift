@@ -9,6 +9,8 @@
 import UIKit
 
 class SettingTableViewController: UITableViewController {
+    
+    private let settingItems = ["ACG大百科", "特別企劃", "花絮", "攻略報報"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,20 +22,20 @@ class SettingTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        return settingItems.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("settingTableCell", forIndexPath: indexPath)  as! SettingTableViewCell
 
-        // Configure the cell...
+        cell.settingButton.setTitle(settingItems[indexPath.row], forState: .Normal)
 
         return cell
     }

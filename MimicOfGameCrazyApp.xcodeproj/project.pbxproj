@@ -11,6 +11,7 @@
 		6B8673511DF4279D00D1EEC6 /* PlaylistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B86734F1DF4279D00D1EEC6 /* PlaylistTableViewCell.xib */; };
 		6B8673541DF4321200D1EEC6 /* ADTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8673521DF4321200D1EEC6 /* ADTableViewCell.swift */; };
 		6B8673551DF4321200D1EEC6 /* ADTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8673531DF4321200D1EEC6 /* ADTableViewCell.xib */; };
+		6B8673571DF4550C00D1EEC6 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8673561DF4550C00D1EEC6 /* SettingTableViewCell.swift */; };
 		6BA768D21DEF2D6300953DAC /* AdGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA768D11DEF2D6300953DAC /* AdGenerator.swift */; };
 		6BA768DA1DEF3D8600953DAC /* AdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA768D91DEF3D8600953DAC /* AdViewController.swift */; };
 		6BF71EA81DEEB2BF00AC27A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF71EA71DEEB2BF00AC27A4 /* AppDelegate.swift */; };
@@ -40,6 +41,7 @@
 		6B86734F1DF4279D00D1EEC6 /* PlaylistTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistTableViewCell.xib; sourceTree = "<group>"; };
 		6B8673521DF4321200D1EEC6 /* ADTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADTableViewCell.swift; sourceTree = "<group>"; };
 		6B8673531DF4321200D1EEC6 /* ADTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADTableViewCell.xib; sourceTree = "<group>"; };
+		6B8673561DF4550C00D1EEC6 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		6BA768D11DEF2D6300953DAC /* AdGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdGenerator.swift; sourceTree = "<group>"; };
 		6BA768D91DEF3D8600953DAC /* AdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdViewController.swift; sourceTree = "<group>"; };
 		6BF71EA41DEEB2BF00AC27A4 /* MimicOfGameCrazyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MimicOfGameCrazyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +152,7 @@
 				6B86734F1DF4279D00D1EEC6 /* PlaylistTableViewCell.xib */,
 				6B8673521DF4321200D1EEC6 /* ADTableViewCell.swift */,
 				6B8673531DF4321200D1EEC6 /* ADTableViewCell.xib */,
+				6B8673561DF4550C00D1EEC6 /* SettingTableViewCell.swift */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				6BF71EE61DEEE5EB00AC27A4 /* VRViewController.swift in Sources */,
 				6BF71EA81DEEB2BF00AC27A4 /* AppDelegate.swift in Sources */,
 				6B8673501DF4279D00D1EEC6 /* PlaylistTableViewCell.swift in Sources */,
+				6B8673571DF4550C00D1EEC6 /* SettingTableViewCell.swift in Sources */,
 				6BF71EE41DEEE5E100AC27A4 /* ProducerViewController.swift in Sources */,
 				6BF71ED51DEEC6F300AC27A4 /* Objects.swift in Sources */,
 				6BF71ED31DEEBA7400AC27A4 /* YoutubeManager.swift in Sources */,
