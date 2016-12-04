@@ -31,6 +31,12 @@ class GameCrazyTableViewController: UITableViewController {
         searchBar.delegate = self
 
         self.tableView.setContentOffset(CGPoint(x: 0.0, y: 44.0), animated: true)
+        
+        let nib = UINib(nibName: "PlaylistTableViewCell", bundle: nil)
+        self.tableView.registerNib(nib, forCellReuseIdentifier: "gamecrazyTableCell")
+        
+        let nib2 = UINib(nibName: "ADTableViewCell", bundle: nil)
+        self.tableView.registerNib(nib2, forCellReuseIdentifier: "Ad1TableViewCell")
     }
 
     
@@ -73,7 +79,7 @@ class GameCrazyTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         switch sections[indexPath.section] {
-        case .AD: return AD1TableViewCell.Static.Height
+        case .AD: return ADTableViewCell.Static.Height
         case .Playlist: return UITableViewAutomaticDimension
         }
     }
@@ -82,14 +88,14 @@ class GameCrazyTableViewController: UITableViewController {
 
         switch sections[indexPath.section] {
         case .AD:
-            let adCell = tableView.dequeueReusableCellWithIdentifier("Ad1TableViewCell", forIndexPath: indexPath) as! AD1TableViewCell
+            let adCell = tableView.dequeueReusableCellWithIdentifier("Ad1TableViewCell", forIndexPath: indexPath) as! ADTableViewCell
             
             adCell.AdImageView.image = UIImage(named: self.ad[0].imageName)
             
             return adCell
             
         case .Playlist:
-            let cell = tableView.dequeueReusableCellWithIdentifier("gamecrazyTableCell", forIndexPath: indexPath) as! GameCrazyTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("gamecrazyTableCell", forIndexPath: indexPath) as! PlaylistTableViewCell
             
             let index: Playlist
             if self.searchResult.count == 0 {
@@ -107,6 +113,16 @@ class GameCrazyTableViewController: UITableViewController {
             return cell
         }
     }
+    
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch sections[indexPath.section] {
+        case .AD:
+            self.performSegueWithIdentifier("showAd1", sender: indexPath.row)
+        case .Playlist:
+            self.performSegueWithIdentifier("showCrazy", sender: indexPath.row)
+        }
+    }
 
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -115,7 +131,7 @@ class GameCrazyTableViewController: UITableViewController {
             case "showCrazy":
                 let webVC = segue.destinationViewController as! CrazyViewController
                 
-                if let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell) {
+                if let indexPath = self.tableView.indexPathForSelectedRow {
                     let videoId: String
                     if searchResult.count == 0 {
                         videoId = playlistResult[indexPath.row].videoId

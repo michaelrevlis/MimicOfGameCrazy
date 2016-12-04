@@ -31,6 +31,12 @@ class LiveTableViewController: UITableViewController {
         searchBar.delegate = self
         
         self.tableView.setContentOffset(CGPoint(x: 0.0, y: 44.0), animated: true)
+        
+        let nib = UINib(nibName: "PlaylistTableViewCell", bundle: nil)
+        self.tableView.registerNib(nib, forCellReuseIdentifier: "liveTableCell")
+        
+        let nib2 = UINib(nibName: "ADTableViewCell", bundle: nil)
+        self.tableView.registerNib(nib2, forCellReuseIdentifier: "Ad2TableViewCell")
     }
     
     
@@ -73,7 +79,7 @@ class LiveTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         switch sections[indexPath.section] {
-        case .AD: return AD2TableViewCell.Static.Height
+        case .AD: return ADTableViewCell.Static.Height
         case .Playlist: return UITableViewAutomaticDimension
         }
     }
@@ -82,14 +88,14 @@ class LiveTableViewController: UITableViewController {
         
         switch sections[indexPath.section] {
         case .AD:
-            let adCell = tableView.dequeueReusableCellWithIdentifier("Ad2TableViewCell", forIndexPath: indexPath) as! AD2TableViewCell
+            let adCell = tableView.dequeueReusableCellWithIdentifier("Ad2TableViewCell", forIndexPath: indexPath) as! ADTableViewCell
             
             adCell.AdImageView.image = UIImage(named: self.ad[0].imageName)
             
             return adCell
             
         case .Playlist:
-            let cell = tableView.dequeueReusableCellWithIdentifier("liveTableCell", forIndexPath: indexPath) as! LiveTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("liveTableCell", forIndexPath: indexPath) as! PlaylistTableViewCell
             
             let index: Playlist
             if self.searchResult.count == 0 {
@@ -109,13 +115,23 @@ class LiveTableViewController: UITableViewController {
     }
     
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch sections[indexPath.section] {
+        case .AD:
+            self.performSegueWithIdentifier("showAd2", sender: indexPath.row)
+        case .Playlist:
+            self.performSegueWithIdentifier("showLive", sender: indexPath.row)
+        }
+    }
+
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
             case "showLive":
                 let webVC = segue.destinationViewController as! LiveViewController
                 
-                if let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell) {
+                if let indexPath = self.tableView.indexPathForSelectedRow {
                     let videoId: String
                     if searchResult.count == 0 {
                         videoId = playlistResult[indexPath.row].videoId

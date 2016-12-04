@@ -31,6 +31,12 @@ class GameProducerTableViewController: UITableViewController {
         searchBar.delegate = self
         
         self.tableView.setContentOffset(CGPoint(x: 0.0, y: 44.0), animated: true)
+        
+        let nib = UINib(nibName: "PlaylistTableViewCell", bundle: nil)
+        self.tableView.registerNib(nib, forCellReuseIdentifier: "gameproducerTableCell")
+        
+        let nib2 = UINib(nibName: "ADTableViewCell", bundle: nil)
+        self.tableView.registerNib(nib2, forCellReuseIdentifier: "Ad3TableViewCell")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -72,7 +78,7 @@ class GameProducerTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         switch sections[indexPath.section] {
-        case .AD: return AD3TableViewCell.Static.Height
+        case .AD: return ADTableViewCell.Static.Height
         case .Playlist: return UITableViewAutomaticDimension
         }
     }
@@ -81,14 +87,14 @@ class GameProducerTableViewController: UITableViewController {
         
         switch sections[indexPath.section] {
         case .AD:
-            let adCell = tableView.dequeueReusableCellWithIdentifier("Ad3TableViewCell", forIndexPath: indexPath) as! AD3TableViewCell
+            let adCell = tableView.dequeueReusableCellWithIdentifier("Ad3TableViewCell", forIndexPath: indexPath) as! ADTableViewCell
             
             adCell.AdImageView.image = UIImage(named: self.ad[0].imageName)
             
             return adCell
             
         case .Playlist:
-            let cell = tableView.dequeueReusableCellWithIdentifier("gameproducerTableCell", forIndexPath: indexPath) as! GameProducerTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("gameproducerTableCell", forIndexPath: indexPath) as! PlaylistTableViewCell
             
             let index: Playlist
             if self.searchResult.count == 0 {
@@ -108,13 +114,23 @@ class GameProducerTableViewController: UITableViewController {
     }
     
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch sections[indexPath.section] {
+        case .AD:
+            self.performSegueWithIdentifier("showAd3", sender: indexPath.row)
+        case .Playlist:
+            self.performSegueWithIdentifier("showProducer", sender: indexPath.row)
+        }
+    }
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
             case "showProducer":
                 let webVC = segue.destinationViewController as! ProducerViewController
                 
-                if let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell) {
+                if let indexPath = self.tableView.indexPathForSelectedRow {
                     let videoId: String
                     if searchResult.count == 0 {
                         videoId = playlistResult[indexPath.row].videoId

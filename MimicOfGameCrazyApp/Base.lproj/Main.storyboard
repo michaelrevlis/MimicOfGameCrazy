@@ -19,69 +19,26 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad1TableViewCell" id="wB1-sY-NYh" customClass="AD1TableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad1TableViewCell" id="wB1-sY-NYh" customClass="ADTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wB1-sY-NYh" id="uCc-tt-NRQ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wkz-bh-Z2m">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                        </imageView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="wkz-bh-Z2m" firstAttribute="leading" secondItem="uCc-tt-NRQ" secondAttribute="leading" id="VGS-xP-Sko"/>
-                                        <constraint firstAttribute="trailing" secondItem="wkz-bh-Z2m" secondAttribute="trailing" id="axW-zd-lXu"/>
-                                        <constraint firstAttribute="bottom" secondItem="wkz-bh-Z2m" secondAttribute="bottom" id="cw7-jO-keU"/>
-                                        <constraint firstItem="wkz-bh-Z2m" firstAttribute="top" secondItem="uCc-tt-NRQ" secondAttribute="top" id="h2e-uk-vs4"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="AdImageView" destination="wkz-bh-Z2m" id="3Hv-9e-DEP"/>
                                     <outlet property="ContentView" destination="uCc-tt-NRQ" id="wCQ-03-cQE"/>
-                                    <segue destination="WNk-lU-3F7" kind="show" identifier="showAd1" id="m9C-1D-Daf"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gamecrazyTableCell" id="CLV-Vb-HPx" customClass="GameCrazyTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gamecrazyTableCell" id="CLV-Vb-HPx" customClass="PlaylistTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="180" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CLV-Vb-HPx" id="pbk-HL-oTc">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ueU-ZS-Lo1">
-                                            <rect key="frame" x="0.0" y="0.0" width="273" height="43"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xys-3V-qvb">
-                                            <rect key="frame" x="281" y="8" width="311" height="27"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Xys-3V-qvb" secondAttribute="trailing" constant="8" id="0mX-wp-4Jd"/>
-                                        <constraint firstAttribute="bottom" secondItem="Xys-3V-qvb" secondAttribute="bottom" constant="8" id="I2o-5t-AvQ"/>
-                                        <constraint firstItem="ueU-ZS-Lo1" firstAttribute="leading" secondItem="pbk-HL-oTc" secondAttribute="leading" id="MA3-xe-Dn9"/>
-                                        <constraint firstItem="Xys-3V-qvb" firstAttribute="leading" secondItem="ueU-ZS-Lo1" secondAttribute="trailing" constant="8" id="RPf-ct-dnQ"/>
-                                        <constraint firstAttribute="bottom" secondItem="ueU-ZS-Lo1" secondAttribute="bottom" id="fOa-q2-ywJ"/>
-                                        <constraint firstItem="Xys-3V-qvb" firstAttribute="leading" secondItem="pbk-HL-oTc" secondAttribute="leading" id="nA3-ym-te6"/>
-                                        <constraint firstAttribute="trailing" secondItem="ueU-ZS-Lo1" secondAttribute="trailing" constant="327" id="nX6-2V-gOs"/>
-                                        <constraint firstItem="Xys-3V-qvb" firstAttribute="top" secondItem="pbk-HL-oTc" secondAttribute="top" constant="8" id="qnN-Wg-4ys"/>
-                                        <constraint firstItem="ueU-ZS-Lo1" firstAttribute="top" secondItem="pbk-HL-oTc" secondAttribute="top" id="wsg-f0-7ka"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="nA3-ym-te6"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="ContentView" destination="pbk-HL-oTc" id="Z8k-eR-c8e"/>
-                                    <outlet property="PlayerView" destination="ueU-ZS-Lo1" id="Eor-fm-fHa"/>
-                                    <outlet property="TitleLabel" destination="Xys-3V-qvb" id="WuQ-9v-f2f"/>
-                                    <segue destination="12M-fB-I2h" kind="show" identifier="showCrazy" id="gk4-ek-ugh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -100,6 +57,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="y0d-Fa-PmM" id="Dqd-za-G0v"/>
+                        <segue destination="12M-fB-I2h" kind="show" identifier="showCrazy" id="k70-st-X11"/>
+                        <segue destination="WNk-lU-3F7" kind="show" identifier="showAd1" id="4n5-Dh-MS9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7N-eU-ej5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -176,65 +135,26 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad2TableViewCell" id="1SD-Ce-cDi" customClass="AD2TableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad2TableViewCell" id="1SD-Ce-cDi" customClass="ADTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1SD-Ce-cDi" id="rah-tD-bSq">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FKF-LB-Cmn">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                        </imageView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="FKF-LB-Cmn" secondAttribute="bottom" id="5M3-Qb-gyU"/>
-                                        <constraint firstItem="FKF-LB-Cmn" firstAttribute="leading" secondItem="rah-tD-bSq" secondAttribute="leading" id="BS4-gc-kiU"/>
-                                        <constraint firstItem="FKF-LB-Cmn" firstAttribute="top" secondItem="rah-tD-bSq" secondAttribute="top" id="itX-6D-krJ"/>
-                                        <constraint firstAttribute="trailing" secondItem="FKF-LB-Cmn" secondAttribute="trailing" id="r2Z-Df-VGv"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="AdImageView" destination="FKF-LB-Cmn" id="UDT-ec-CaP"/>
                                     <outlet property="ContentView" destination="rah-tD-bSq" id="eVS-3M-qyh"/>
-                                    <segue destination="WNk-lU-3F7" kind="show" identifier="showAd2" id="b6p-UB-onW"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="liveTableCell" id="F5c-6L-Kdw" customClass="LiveTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="liveTableCell" id="F5c-6L-Kdw" customClass="PlaylistTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="180" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F5c-6L-Kdw" id="M9E-4F-GSC">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oWb-ee-pmu">
-                                            <rect key="frame" x="0.0" y="0.0" width="325" height="43"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="325" id="I1e-lr-iJG"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpK-aN-zTi">
-                                            <rect key="frame" x="333" y="8" width="259" height="27"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="oWb-ee-pmu" secondAttribute="bottom" id="0cC-Fj-s2d"/>
-                                        <constraint firstItem="cpK-aN-zTi" firstAttribute="leading" secondItem="oWb-ee-pmu" secondAttribute="trailing" constant="8" id="5Bq-29-XQQ"/>
-                                        <constraint firstItem="oWb-ee-pmu" firstAttribute="leading" secondItem="M9E-4F-GSC" secondAttribute="leading" id="K3R-ul-E17"/>
-                                        <constraint firstItem="oWb-ee-pmu" firstAttribute="top" secondItem="M9E-4F-GSC" secondAttribute="top" id="Tgk-7X-2FH"/>
-                                        <constraint firstItem="cpK-aN-zTi" firstAttribute="top" secondItem="M9E-4F-GSC" secondAttribute="top" constant="8" id="U35-xa-Tok"/>
-                                        <constraint firstAttribute="bottom" secondItem="cpK-aN-zTi" secondAttribute="bottom" constant="8" id="acz-0g-cME"/>
-                                        <constraint firstAttribute="trailing" secondItem="cpK-aN-zTi" secondAttribute="trailing" constant="8" id="eM8-3w-eoV"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="ContentView" destination="M9E-4F-GSC" id="X1m-nu-tsV"/>
-                                    <outlet property="PlayerView" destination="oWb-ee-pmu" id="rIp-oK-1QT"/>
-                                    <outlet property="TitleLabel" destination="cpK-aN-zTi" id="AHz-0O-zLA"/>
-                                    <segue destination="siK-9I-4Im" kind="show" identifier="showLive" id="bSj-1R-xyU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -253,6 +173,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="A14-Di-SuE" id="8dm-tL-4IP"/>
+                        <segue destination="siK-9I-4Im" kind="show" identifier="showLive" id="ans-He-Z0g"/>
+                        <segue destination="WNk-lU-3F7" kind="show" identifier="showAd2" id="6Zv-IW-KEX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9R2-vx-IV5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -309,65 +231,26 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad3TableViewCell" id="Qeg-AP-Clp" customClass="AD3TableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad3TableViewCell" id="Qeg-AP-Clp" customClass="ADTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qeg-AP-Clp" id="Qbk-EE-LxA">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xd8-ZE-EzP">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                        </imageView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="Xd8-ZE-EzP" secondAttribute="bottom" id="2uB-Wg-HTI"/>
-                                        <constraint firstItem="Xd8-ZE-EzP" firstAttribute="top" secondItem="Qbk-EE-LxA" secondAttribute="top" id="XE9-7M-80Z"/>
-                                        <constraint firstItem="Xd8-ZE-EzP" firstAttribute="leading" secondItem="Qbk-EE-LxA" secondAttribute="leading" id="b4i-FY-xQQ"/>
-                                        <constraint firstAttribute="trailing" secondItem="Xd8-ZE-EzP" secondAttribute="trailing" id="cfX-DV-0Cj"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="AdImageView" destination="Xd8-ZE-EzP" id="hNk-UA-AhF"/>
                                     <outlet property="ContentView" destination="Qbk-EE-LxA" id="oXd-h8-kA8"/>
-                                    <segue destination="WNk-lU-3F7" kind="show" identifier="showAd3" id="iOc-w5-uQE"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameproducerTableCell" id="gDS-Z9-zeZ" customClass="GameProducerTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameproducerTableCell" id="gDS-Z9-zeZ" customClass="PlaylistTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="180" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gDS-Z9-zeZ" id="wDa-fa-eR9">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J9v-3z-J9c">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="240" id="k4V-wq-9IO"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANK-ev-BfY">
-                                            <rect key="frame" x="248" y="8" width="344" height="27"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="J9v-3z-J9c" firstAttribute="leading" secondItem="wDa-fa-eR9" secondAttribute="leading" id="6de-Kk-CwQ"/>
-                                        <constraint firstAttribute="bottom" secondItem="ANK-ev-BfY" secondAttribute="bottom" constant="8" id="SSZ-09-EjX"/>
-                                        <constraint firstItem="ANK-ev-BfY" firstAttribute="top" secondItem="wDa-fa-eR9" secondAttribute="top" constant="8" id="Sb2-L7-xAD"/>
-                                        <constraint firstAttribute="trailing" secondItem="ANK-ev-BfY" secondAttribute="trailing" constant="8" id="Udd-dk-Kkg"/>
-                                        <constraint firstAttribute="bottom" secondItem="J9v-3z-J9c" secondAttribute="bottom" id="g4z-Zs-fA2"/>
-                                        <constraint firstItem="J9v-3z-J9c" firstAttribute="top" secondItem="wDa-fa-eR9" secondAttribute="top" id="pkX-Qn-kAr"/>
-                                        <constraint firstItem="ANK-ev-BfY" firstAttribute="leading" secondItem="J9v-3z-J9c" secondAttribute="trailing" constant="8" id="y3a-wY-urB"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="ContentView" destination="wDa-fa-eR9" id="lhB-Zl-T8V"/>
-                                    <outlet property="PlayerView" destination="J9v-3z-J9c" id="aFo-HD-5am"/>
-                                    <outlet property="TitleLabel" destination="ANK-ev-BfY" id="cMz-8x-3p7"/>
-                                    <segue destination="Fhg-AA-cEL" kind="show" identifier="showProducer" id="0pk-Fv-oE7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -386,6 +269,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="tuo-3N-SNZ" id="p8s-IM-NkY"/>
+                        <segue destination="Fhg-AA-cEL" kind="show" identifier="showProducer" id="I2V-38-kw3"/>
+                        <segue destination="WNk-lU-3F7" kind="show" identifier="showAd3" id="YOe-aQ-Cef"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wHZ-NC-98O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -444,65 +329,26 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad4TableViewCell" id="XoQ-FA-qYF" customClass="AD4TableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ad4TableViewCell" id="XoQ-FA-qYF" customClass="ADTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XoQ-FA-qYF" id="TxO-4C-imi">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S4i-DQ-dih">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                        </imageView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="S4i-DQ-dih" secondAttribute="bottom" id="9jY-xF-MIk"/>
-                                        <constraint firstAttribute="trailing" secondItem="S4i-DQ-dih" secondAttribute="trailing" id="FHI-gq-nTu"/>
-                                        <constraint firstItem="S4i-DQ-dih" firstAttribute="top" secondItem="TxO-4C-imi" secondAttribute="top" id="Onl-bo-A7z"/>
-                                        <constraint firstItem="S4i-DQ-dih" firstAttribute="leading" secondItem="TxO-4C-imi" secondAttribute="leading" id="sFu-N2-Ne1"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="AdImageView" destination="S4i-DQ-dih" id="or4-8f-ZFI"/>
                                     <outlet property="ContentView" destination="TxO-4C-imi" id="ljs-Sq-yVq"/>
-                                    <segue destination="WNk-lU-3F7" kind="show" identifier="showAd4" id="1mr-8S-AcN"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VRGameTableCell" id="4M9-FB-mxk" customClass="VRGameTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VRGameTableCell" id="4M9-FB-mxk" customClass="PlaylistTableViewCell" customModule="MimicOfGameCrazyApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="180" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4M9-FB-mxk" id="8a1-ZS-SUv">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdL-OF-YCD">
-                                            <rect key="frame" x="248" y="8" width="344" height="27"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="guG-g5-Knd">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="240" id="eo4-xr-w0n"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="guG-g5-Knd" firstAttribute="leading" secondItem="8a1-ZS-SUv" secondAttribute="leading" id="3CL-wl-rD1"/>
-                                        <constraint firstAttribute="bottom" secondItem="fdL-OF-YCD" secondAttribute="bottom" constant="8" id="7iq-VU-FMY"/>
-                                        <constraint firstItem="fdL-OF-YCD" firstAttribute="top" secondItem="8a1-ZS-SUv" secondAttribute="top" constant="8" id="FDx-6R-A8R"/>
-                                        <constraint firstAttribute="bottom" secondItem="guG-g5-Knd" secondAttribute="bottom" id="Fbl-nj-VbS"/>
-                                        <constraint firstAttribute="trailing" secondItem="fdL-OF-YCD" secondAttribute="trailing" constant="8" id="Lm6-lz-Cut"/>
-                                        <constraint firstItem="guG-g5-Knd" firstAttribute="top" secondItem="8a1-ZS-SUv" secondAttribute="top" id="tx8-x2-LZd"/>
-                                        <constraint firstItem="fdL-OF-YCD" firstAttribute="leading" secondItem="guG-g5-Knd" secondAttribute="trailing" constant="8" id="yQq-Xy-pWO"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="ContentView" destination="8a1-ZS-SUv" id="dSI-Dc-ZIn"/>
-                                    <outlet property="PlayerView" destination="guG-g5-Knd" id="0d6-Ue-ZlU"/>
-                                    <outlet property="TitleLabel" destination="fdL-OF-YCD" id="eYf-bt-uml"/>
-                                    <segue destination="TMO-2Q-a0a" kind="show" identifier="showVR" id="5N6-7C-ssW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -521,6 +367,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="YwU-y0-e5c" id="sUU-vM-fWO"/>
+                        <segue destination="TMO-2Q-a0a" kind="show" identifier="showVR" id="FcN-5D-JRb"/>
+                        <segue destination="WNk-lU-3F7" kind="show" identifier="showAd4" id="s3T-Zg-i0S"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zHK-Ws-eRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -657,7 +505,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1mr-8S-AcN"/>
+        <segue reference="s3T-Zg-i0S"/>
         <segue reference="97e-OF-hGj"/>
     </inferredMetricsTieBreakers>
 </document>

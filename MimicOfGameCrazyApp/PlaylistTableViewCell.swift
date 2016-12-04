@@ -1,23 +1,22 @@
 //
-//  TableViewCell.swift
+//  PlaylistTableViewCell.swift
 //  MimicOfGameCrazyApp
 //
-//  Created by MichaelRevlis on 2016/11/30.
+//  Created by MichaelRevlis on 2016/12/4.
 //  Copyright © 2016年 MichaelRevlis. All rights reserved.
 //
 
 import UIKit
 
-class LiveTableViewCell: UITableViewCell {
-    
+class PlaylistTableViewCell: UITableViewCell {
+
     @IBOutlet weak var ContentView: UIView!
     @IBOutlet weak var PlayerView: UIImageView!
     @IBOutlet weak var TitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
+
         //// PlayerView ////
         let PlayerViewWidth: CGFloat = UIScreen.mainScreen().bounds.size.width / 3
         let PlayerViewWidthConstraint = NSLayoutConstraint(item: PlayerView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: PlayerViewWidth)
@@ -41,6 +40,6 @@ class LiveTableViewCell: UITableViewCell {
         TitleLabel.translatesAutoresizingMaskIntoConstraints = false
         ContentView.addSubview(TitleLabel)
         ContentView.addConstraints([TitleLabelTopConstraint, TitleLabelBottomConstraint, TitleLabelLeadingConstraint, TitleLabelTrailingConstraint, TitleLabelHeight])
-        
-    }
+}
+    
 }
