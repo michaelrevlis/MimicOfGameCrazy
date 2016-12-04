@@ -42,3 +42,8 @@ enum Section {
     case AD, Playlist
 }
 
+
+struct GNN {
+    static let url = NSURL(string: "https://gnn.gamer.com.tw/")!
+}
+

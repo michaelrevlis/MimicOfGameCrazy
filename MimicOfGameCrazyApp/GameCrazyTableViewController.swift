@@ -150,6 +150,12 @@ class GameCrazyTableViewController: UITableViewController {
             }
         }
     }
+    
+    
+    
+    @IBAction func openGNN(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(GNN.url)
+    }
 
 }
 
