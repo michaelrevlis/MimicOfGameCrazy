@@ -17,13 +17,14 @@ class GameCrazyTableViewController: UITableViewController {
     private var ad = [AD]()
     private var searchResult = [Playlist]()
     private var inSearchMode = false
+    private var pageToken = ""
+    private var isPageRefreshing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         YoutuberManager.shared.gamecrazyDelegate = self
         YoutuberManager.shared.gamecrazySearchDelegate = self
-        YoutuberManager.shared.getPlaylistData(.GameCrazy)
 
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 96
@@ -123,6 +124,18 @@ class GameCrazyTableViewController: UITableViewController {
             self.performSegueWithIdentifier("showCrazy", sender: indexPath.row)
         }
     }
+    
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height) {
+            if self.isPageRefreshing == false {
+                if self.pageToken != "End" {
+                isPageRefreshing = true
+                YoutuberManager.shared.getPlaylistData(.GameCrazy, nextPageToken: pageToken)
+                }
+            }
+        }
+    }
 
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -162,8 +175,12 @@ class GameCrazyTableViewController: UITableViewController {
 
 
 extension GameCrazyTableViewController: YoutuberManagerDelegate {
-    func manager(manager: YoutuberManager, playlistResult: [Playlist]) {
-        self.playlistResult = playlistResult
+    func manager(manager: YoutuberManager, playlistResult: [Playlist], nextPageToken: String) {
+        for result in playlistResult {
+            self.playlistResult.append(result)
+        }
+        self.pageToken = nextPageToken
+        self.isPageRefreshing = false
         self.tableView.reloadData()
     }
 }

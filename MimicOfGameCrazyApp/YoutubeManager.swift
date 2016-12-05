@@ -55,22 +55,22 @@ class YoutuberManager {
     
     
     
-    func getPlaylistData(playlistType: PlaylistType) {
+    func getPlaylistData(playlistType: PlaylistType, nextPageToken: String) {
         
         var urlString = String()
         
         switch playlistType {
         case .GameCrazy:
-            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(陪你去看電玩瘋)&key=\(apiKey)&maxResults=\(50)"
+            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(陪你去看電玩瘋)&key=\(apiKey)&maxResults=\(10)&pageToken=\(nextPageToken)"
             
         case .Live:
-            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(直播影片)&key=\(apiKey)&maxResults=\(50)"
+            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(直播影片)&key=\(apiKey)&maxResults=\(10)&pageToken=\(nextPageToken)"
             
         case .GameProducer:
-            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(遊戲製作團隊來訪)&key=\(apiKey)&maxResults=\(50)"
+            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(遊戲製作團隊來訪)&key=\(apiKey)&maxResults=\(10)&pageToken=\(nextPageToken)"
             
         case .VRGame:
-            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(VR遊戲直播)&key=\(apiKey)&maxResults=\(50)"
+            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(VR遊戲直播)&key=\(apiKey)&maxResults=\(10)&pageToken=\(nextPageToken)"
         }
 
         
@@ -90,6 +90,10 @@ class YoutuberManager {
                                     items = resultsDict["items"] as? NSArray
                         else { fatalError() }
                     
+                    let nextPageToken = resultsDict["nextPageToken"] as? String ?? "End"
+                    print("NEXT")
+                    print(nextPageToken)
+                    
                     for i in 0...items.count - 1 {
                         guard let  itemDict = items[i] as? NSDictionary,
                                         snippet = itemDict["snippet"] as? NSDictionary,
@@ -107,22 +111,22 @@ class YoutuberManager {
                     switch playlistType {
                     case .GameCrazy:
                         dispatch_async(dispatch_get_main_queue(), {
-                            self.gamecrazyDelegate?.manager(self, playlistResult: playlistResult)
+                            self.gamecrazyDelegate?.manager(self, playlistResult: playlistResult, nextPageToken: nextPageToken)
                         })
                         
                     case .Live:
                         dispatch_async(dispatch_get_main_queue(), {
-                            self.liveDelegate?.manager(self, playlistResult: playlistResult)
+                            self.liveDelegate?.manager(self, playlistResult: playlistResult, nextPageToken: nextPageToken)
                         })
                         
                     case .GameProducer:
                         dispatch_async(dispatch_get_main_queue(), {
-                            self.gameproducerDelegate?.manager(self, playlistResult: playlistResult)
+                            self.gameproducerDelegate?.manager(self, playlistResult: playlistResult, nextPageToken: nextPageToken)
                         })
                         
                     case .VRGame:
                         dispatch_async(dispatch_get_main_queue(), {
-                            self.vrgameDelegate?.manager(self, playlistResult: playlistResult)
+                            self.vrgameDelegate?.manager(self, playlistResult: playlistResult, nextPageToken: nextPageToken)
                         })
                     }
   
@@ -216,7 +220,7 @@ class YoutuberManager {
 
 
 protocol YoutuberManagerDelegate: class {
-    func manager(manager: YoutuberManager, playlistResult: [Playlist])
+    func manager(manager: YoutuberManager, playlistResult: [Playlist], nextPageToken: String)
 }
 
 protocol YoutuberManagerSearchDelegate: class {

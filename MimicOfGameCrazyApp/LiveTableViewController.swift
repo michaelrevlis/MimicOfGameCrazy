@@ -17,13 +17,14 @@ class LiveTableViewController: UITableViewController {
     private var ad = [AD]()
     private var searchResult = [Playlist]()
     private var inSearchMode = false
+    private var pageToken = ""
+    private var isPageRefreshing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         YoutuberManager.shared.liveDelegate = self
         YoutuberManager.shared.liveSearchDelegate = self
-        YoutuberManager.shared.getPlaylistData(.Live)
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 96
@@ -123,6 +124,18 @@ class LiveTableViewController: UITableViewController {
             self.performSegueWithIdentifier("showLive", sender: indexPath.row)
         }
     }
+    
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height) {
+            if self.isPageRefreshing == false {
+                if self.pageToken != "End" {
+                    isPageRefreshing = true
+                    YoutuberManager.shared.getPlaylistData(.Live, nextPageToken: pageToken)
+                }
+            }
+        }
+    }
 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -161,8 +174,12 @@ class LiveTableViewController: UITableViewController {
 
 
 extension LiveTableViewController: YoutuberManagerDelegate {
-    func manager(manager: YoutuberManager, playlistResult: [Playlist]) {
-        self.playlistResult = playlistResult
+    func manager(manager: YoutuberManager, playlistResult: [Playlist], nextPageToken: String) {
+        for result in playlistResult {
+            self.playlistResult.append(result)
+        }
+        self.pageToken = nextPageToken
+        self.isPageRefreshing = false
         self.tableView.reloadData()
     }
 }

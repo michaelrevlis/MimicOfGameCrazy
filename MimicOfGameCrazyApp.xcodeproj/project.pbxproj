@@ -426,6 +426,7 @@
 			baseConfigurationReference = FF8BAB4684F874AF9547846E /* Pods-MimicOfGameCrazyApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MimicOfGameCrazyApp/Info.plist;
@@ -433,6 +434,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mir.MimicOfGameCrazyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -441,6 +443,7 @@
 			baseConfigurationReference = 2A45A3C1CE79470D3F51F4EE /* Pods-MimicOfGameCrazyApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MimicOfGameCrazyApp/Info.plist;

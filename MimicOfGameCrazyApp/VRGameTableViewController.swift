@@ -17,13 +17,14 @@ class VRGameTableViewController: UITableViewController {
     private var ad = [AD]()
     private var searchResult = [Playlist]()
     private var inSearchMode = false
+    private var pageToken = ""
+    private var isPageRefreshing = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         YoutuberManager.shared.vrgameDelegate = self
         YoutuberManager.shared.vrgameSearchDelegate = self
-        YoutuberManager.shared.getPlaylistData(.VRGame)
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 96
@@ -123,6 +124,19 @@ class VRGameTableViewController: UITableViewController {
         }
     }
     
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height) {
+            if self.isPageRefreshing == false {
+                if self.pageToken != "End" {
+                    isPageRefreshing = true
+                    YoutuberManager.shared.getPlaylistData(.VRGame, nextPageToken: pageToken)
+                }
+            }
+        }
+    }
+
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
@@ -159,8 +173,12 @@ class VRGameTableViewController: UITableViewController {
 
 
 extension VRGameTableViewController: YoutuberManagerDelegate {
-    func manager(manager: YoutuberManager, playlistResult: [Playlist]) {
-        self.playlistResult = playlistResult
+    func manager(manager: YoutuberManager, playlistResult: [Playlist], nextPageToken: String) {
+        for result in playlistResult {
+            self.playlistResult.append(result)
+        }
+        self.pageToken = nextPageToken
+        self.isPageRefreshing = false
         self.tableView.reloadData()
     }
 }
