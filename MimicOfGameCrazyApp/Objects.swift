@@ -34,16 +34,16 @@ class AD {
 
 
 enum PlaylistType: Int {
-    case GameCrazy, Live, GameProducer, VRGame
+    case gameCrazy, live, gameProducer, vrGame
 }
 
 
 enum Section {
-    case AD, Playlist
+    case ad, playlist
 }
 
 
 struct GNN {
-    static let url = NSURL(string: "https://gnn.gamer.com.tw/")!
+    static let url = URL(string: "https://gnn.gamer.com.tw/")!
 }
 

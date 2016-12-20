@@ -10,32 +10,32 @@ import UIKit
 
 class SettingTableViewController: UITableViewController {
     
-    private let settingItems = ["ACG大百科", "特別企劃", "花絮", "攻略報報"]
+    fileprivate let settingItems = ["ACG大百科", "特別企劃", "花絮", "攻略報報"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .plain, target: nil, action: nil)
         
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return settingItems.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("settingTableCell", forIndexPath: indexPath)  as! SettingTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "settingTableCell", for: indexPath)  as! SettingTableViewCell
 
-        cell.settingButton.setTitle(settingItems[indexPath.row], forState: .Normal)
+        cell.settingButton.setTitle(settingItems[indexPath.row], for: UIControlState())
 
         return cell
     }
@@ -44,7 +44,7 @@ class SettingTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

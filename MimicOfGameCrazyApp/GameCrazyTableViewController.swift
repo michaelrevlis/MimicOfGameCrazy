@@ -12,13 +12,13 @@ class GameCrazyTableViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
 
-    private var playlistResult = [Playlist]()
-    private var sections: [Section] = [.AD, .Playlist]
-    private var ad = [AD]()
-    private var searchResult = [Playlist]()
-    private var inSearchMode = false
-    private var pageToken = ""
-    private var isPageRefreshing = false
+    fileprivate var playlistResult = [Playlist]()
+    fileprivate var sections: [Section] = [.ad, .playlist]
+    fileprivate var ad = [AD]()
+    fileprivate var searchResult = [Playlist]()
+    fileprivate var inSearchMode = false
+    fileprivate var pageToken = ""
+    fileprivate var isPageRefreshing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +34,14 @@ class GameCrazyTableViewController: UITableViewController {
         self.tableView.setContentOffset(CGPoint(x: 0.0, y: 44.0), animated: true)
         
         let nib = UINib(nibName: "PlaylistTableViewCell", bundle: nil)
-        self.tableView.registerNib(nib, forCellReuseIdentifier: "gamecrazyTableCell")
+        self.tableView.register(nib, forCellReuseIdentifier: "gamecrazyTableCell")
         
         let nib2 = UINib(nibName: "ADTableViewCell", bundle: nil)
-        self.tableView.registerNib(nib2, forCellReuseIdentifier: "Ad1TableViewCell")
+        self.tableView.register(nib2, forCellReuseIdentifier: "Ad1TableViewCell")
     }
 
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         AdGenerator.shared.random {(result) in
@@ -52,7 +52,7 @@ class GameCrazyTableViewController: UITableViewController {
     }
     
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         
         self.ad.removeAll()
@@ -61,42 +61,42 @@ class GameCrazyTableViewController: UITableViewController {
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch sections[section] {
-        case .AD:
+        case .ad:
             return 1
-        case .Playlist:
+        case .playlist:
             return playlistResult.count
         }
         
     }
     
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         switch sections[indexPath.section] {
-        case .AD: return ADTableViewCell.Static.Height
-        case .Playlist: return UITableViewAutomaticDimension
+        case .ad: return ADTableViewCell.Static.Height
+        case .playlist: return UITableViewAutomaticDimension
         }
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         switch sections[indexPath.section] {
-        case .AD:
-            let adCell = tableView.dequeueReusableCellWithIdentifier("Ad1TableViewCell", forIndexPath: indexPath) as! ADTableViewCell
+        case .ad:
+            let adCell = tableView.dequeueReusableCell(withIdentifier: "Ad1TableViewCell", for: indexPath) as! ADTableViewCell
             
             adCell.AdImageView.image = UIImage(named: self.ad[0].imageName)
             
             return adCell
             
-        case .Playlist:
-            let cell = tableView.dequeueReusableCellWithIdentifier("gamecrazyTableCell", forIndexPath: indexPath) as! PlaylistTableViewCell
+        case .playlist:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "gamecrazyTableCell", for: indexPath) as! PlaylistTableViewCell
             
             let index: Playlist
             if self.searchResult.count == 0 {
@@ -105,9 +105,9 @@ class GameCrazyTableViewController: UITableViewController {
                 index = self.searchResult[indexPath.row]
             }
             cell.TitleLabel.text = index.title
-            guard let imageUrl = NSURL(string: index.thumbnailUrl)
+            guard let imageUrl = URL(string: index.thumbnailUrl)
                 else { fatalError() }
-            guard let imageData = NSData(contentsOfURL: imageUrl)
+            guard let imageData = try? Data(contentsOf: imageUrl)
                 else { fatalError() }
             cell.PlayerView.image = UIImage(data: imageData)
             
@@ -116,33 +116,33 @@ class GameCrazyTableViewController: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch sections[indexPath.section] {
-        case .AD:
-            self.performSegueWithIdentifier("showAd1", sender: indexPath.row)
-        case .Playlist:
-            self.performSegueWithIdentifier("showCrazy", sender: indexPath.row)
+        case .ad:
+            self.performSegue(withIdentifier: "showAd1", sender: indexPath.row)
+        case .playlist:
+            self.performSegue(withIdentifier: "showCrazy", sender: indexPath.row)
         }
     }
     
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height) {
             if self.isPageRefreshing == false {
                 if self.pageToken != "End" {
                 isPageRefreshing = true
-                YoutuberManager.shared.getPlaylistData(.GameCrazy, nextPageToken: pageToken)
+                YoutuberManager.shared.getPlaylistData(.gameCrazy, nextPageToken: pageToken)
                 }
             }
         }
     }
 
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {
             case "showCrazy":
-                let webVC = segue.destinationViewController as! CrazyViewController
+                let webVC = segue.destination as! CrazyViewController
                 
                 if let indexPath = self.tableView.indexPathForSelectedRow {
                     let videoId: String
@@ -155,7 +155,7 @@ class GameCrazyTableViewController: UITableViewController {
                 }
                 
             case "showAd1":
-                let adVC = segue.destinationViewController as! AdViewController
+                let adVC = segue.destination as! AdViewController
                 
                 adVC.urlString = self.ad[0].url
                 
@@ -166,8 +166,8 @@ class GameCrazyTableViewController: UITableViewController {
     
     
     
-    @IBAction func openGNN(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(GNN.url)
+    @IBAction func openGNN(_ sender: AnyObject) {
+        UIApplication.shared.openURL(GNN.url as URL)
     }
 
 }
@@ -175,7 +175,7 @@ class GameCrazyTableViewController: UITableViewController {
 
 
 extension GameCrazyTableViewController: YoutuberManagerDelegate {
-    func manager(manager: YoutuberManager, playlistResult: [Playlist], nextPageToken: String) {
+    func manager(_ manager: YoutuberManager, playlistResult: [Playlist], nextPageToken: String) {
         for result in playlistResult {
             self.playlistResult.append(result)
         }
@@ -187,7 +187,7 @@ extension GameCrazyTableViewController: YoutuberManagerDelegate {
 
 
 extension GameCrazyTableViewController: YoutuberManagerSearchDelegate {
-    func manager(manager: YoutuberManager, searchResult: [Playlist]) {
+    func manager(_ manager: YoutuberManager, searchResult: [Playlist]) {
         self.searchResult = searchResult
         self.tableView.reloadData()
     }
@@ -195,15 +195,15 @@ extension GameCrazyTableViewController: YoutuberManagerSearchDelegate {
 
 
 extension GameCrazyTableViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == "" {
             inSearchMode = false
             view.endEditing(true)
@@ -212,7 +212,7 @@ extension GameCrazyTableViewController: UISearchBarDelegate {
         }
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         
         if searchBar.text == nil || searchBar.text == "" {
@@ -222,12 +222,12 @@ extension GameCrazyTableViewController: UISearchBarDelegate {
             tableView.reloadData()
         } else {
             inSearchMode = true
-            let searchKeyWord = searchBar.text!.lowercaseString
-            YoutuberManager.shared.searchVideo(searchKeyWord, vc: .GameCrazy)
+            let searchKeyWord = searchBar.text!.lowercased()
+            YoutuberManager.shared.searchVideo(searchKeyWord, vc: .gameCrazy)
         }
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.showsCancelButton = false
         inSearchMode = false

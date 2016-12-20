@@ -21,7 +21,7 @@ class ADTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        AdImageView.contentMode = .ScaleToFill
+        AdImageView.contentMode = .scaleToFill
     }
     
 }

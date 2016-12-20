@@ -14,12 +14,12 @@ class YoutuberManager {
     
     static let shared = YoutuberManager()
     
-    private let apiKey = "AIzaSyBXKpFxcL9A6yyJ_FaZb0jyHsASFjUhH1Q"
-    private let channelId = "UC4c-wTOqEID-_vH4MhNs06w"
-    private let 陪你去看電玩瘋 = "PLDB-qS0bMlKEKf9HmaDvEHedn5n059RfB"
-    private let 直播影片 = "PLDB-qS0bMlKGUbSK7LWnOltKSyNVV6XWZ"
-    private let 遊戲製作團隊來訪 = "PLDB-qS0bMlKE8y24f8HOx1VJSmgdyk7g3"
-    private let VR遊戲直播 = "PLDB-qS0bMlKFpi_WYPfrEQBsJkgOZSdnZ"
+    fileprivate let apiKey = "AIzaSyBXKpFxcL9A6yyJ_FaZb0jyHsASFjUhH1Q"
+    fileprivate let channelId = "UC4c-wTOqEID-_vH4MhNs06w"
+    fileprivate let 陪你去看電玩瘋 = "PLDB-qS0bMlKEKf9HmaDvEHedn5n059RfB"
+    fileprivate let 直播影片 = "PLDB-qS0bMlKGUbSK7LWnOltKSyNVV6XWZ"
+    fileprivate let 遊戲製作團隊來訪 = "PLDB-qS0bMlKE8y24f8HOx1VJSmgdyk7g3"
+    fileprivate let VR遊戲直播 = "PLDB-qS0bMlKFpi_WYPfrEQBsJkgOZSdnZ"
     
     weak var gamecrazyDelegate: YoutuberManagerDelegate?
     weak var liveDelegate: YoutuberManagerDelegate?
@@ -34,47 +34,48 @@ class YoutuberManager {
     //// Playlist ////
     /////////////////////
     
-    typealias PerformGetRequest = (data: NSData?, HTTPStatusCode: Int, error: NSError?) -> Void
+    typealias PerformGetRequest = (_ data: Data?, _ HTTPStatusCode: Int, _ error: NSError?) -> Void
     
-    private func performGetRequest(targetURL: NSURL!, completion: PerformGetRequest) {
+    fileprivate func performGetRequest(_ targetURL: URL!, completion: @escaping PerformGetRequest) {
         
-        let request = NSMutableURLRequest(URL: targetURL)
-        request.HTTPMethod = "GET"
+        let request = NSMutableURLRequest(url: targetURL)
+        request.httpMethod = "GET"
         
-        let sessionConfigureation = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let sessionConfigureation = URLSessionConfiguration.default
         
-        let session = NSURLSession(configuration: sessionConfigureation)
+        let session = URLSession(configuration: sessionConfigureation)
         
-        let task = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                completion(data: data, HTTPStatusCode: (response as! NSHTTPURLResponse).statusCode, error: error)
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            let httpResponse = response as? HTTPURLResponse
+            DispatchQueue.main.async(execute: { () -> Void in
+                completion(data, (httpResponse?.statusCode)!, error as NSError?)
             })
-        })
+        }
         task.resume()
     }
     
     
     
-    func getPlaylistData(playlistType: PlaylistType, nextPageToken: String) {
+    func getPlaylistData(_ playlistType: PlaylistType, nextPageToken: String) {
         
         var urlString = String()
         
         switch playlistType {
-        case .GameCrazy:
+        case .gameCrazy:
             urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(陪你去看電玩瘋)&key=\(apiKey)&maxResults=\(10)&pageToken=\(nextPageToken)"
             
-        case .Live:
+        case .live:
             urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(直播影片)&key=\(apiKey)&maxResults=\(10)&pageToken=\(nextPageToken)"
             
-        case .GameProducer:
+        case .gameProducer:
             urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(遊戲製作團隊來訪)&key=\(apiKey)&maxResults=\(10)&pageToken=\(nextPageToken)"
             
-        case .VRGame:
+        case .vrGame:
             urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(VR遊戲直播)&key=\(apiKey)&maxResults=\(10)&pageToken=\(nextPageToken)"
         }
 
         
-        guard let gamecrazyUrl = NSURL(string: urlString)
+        guard let gamecrazyUrl = URL(string: urlString)
             else {
                 print("Error: NSURL gamecrazyUrl")
                 return
@@ -86,8 +87,8 @@ class YoutuberManager {
             
             if HTTPStatusCode == 200 && error == nil {
                 do {
-                    guard let  resultsDict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary,
-                                    items = resultsDict["items"] as? NSArray
+                    guard let  resultsDict = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary,
+                                    let items = resultsDict["items"] as? NSArray
                         else { fatalError() }
                     
                     let nextPageToken = resultsDict["nextPageToken"] as? String ?? "End"
@@ -96,36 +97,36 @@ class YoutuberManager {
                     
                     for i in 0...items.count - 1 {
                         guard let  itemDict = items[i] as? NSDictionary,
-                                        snippet = itemDict["snippet"] as? NSDictionary,
-                                        title = snippet["title"] as? String,
-                                        thumbnail = snippet["thumbnails"] as? NSDictionary,
-                                        defaults = thumbnail["default"] as? NSDictionary,
-                                        thumbnailUrl = defaults["url"] as? String,
-                                        resourceId = snippet["resourceId"] as? NSDictionary,
-                                        videoId = resourceId["videoId"] as? String
+                                        let snippet = itemDict["snippet"] as? NSDictionary,
+                                        let title = snippet["title"] as? String,
+                                        let thumbnail = snippet["thumbnails"] as? NSDictionary,
+                                        let defaults = thumbnail["default"] as? NSDictionary,
+                                        let thumbnailUrl = defaults["url"] as? String,
+                                        let resourceId = snippet["resourceId"] as? NSDictionary,
+                                        let videoId = resourceId["videoId"] as? String
                             else { fatalError() }
                         
                         playlistResult.append(Playlist(title: title, thumbnailUrl: thumbnailUrl, videoId: videoId))
                     }
                     
                     switch playlistType {
-                    case .GameCrazy:
-                        dispatch_async(dispatch_get_main_queue(), {
+                    case .gameCrazy:
+                        DispatchQueue.main.async(execute: {
                             self.gamecrazyDelegate?.manager(self, playlistResult: playlistResult, nextPageToken: nextPageToken)
                         })
                         
-                    case .Live:
-                        dispatch_async(dispatch_get_main_queue(), {
+                    case .live:
+                        DispatchQueue.main.async(execute: {
                             self.liveDelegate?.manager(self, playlistResult: playlistResult, nextPageToken: nextPageToken)
                         })
                         
-                    case .GameProducer:
-                        dispatch_async(dispatch_get_main_queue(), {
+                    case .gameProducer:
+                        DispatchQueue.main.async(execute: {
                             self.gameproducerDelegate?.manager(self, playlistResult: playlistResult, nextPageToken: nextPageToken)
                         })
                         
-                    case .VRGame:
-                        dispatch_async(dispatch_get_main_queue(), {
+                    case .vrGame:
+                        DispatchQueue.main.async(execute: {
                             self.vrgameDelegate?.manager(self, playlistResult: playlistResult, nextPageToken: nextPageToken)
                         })
                     }
@@ -145,10 +146,10 @@ class YoutuberManager {
     //// Search Video ////
     ///////////////////////////////
 
-    func searchVideo(keyword: String, vc: PlaylistType) {
+    func searchVideo(_ keyword: String, vc: PlaylistType) {
         let urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=\(keyword)&channelId=\(channelId)&maxResults=\(20)&type=video&key=\(apiKey)"
         
-        guard let searchUrl = NSURL(string: urlString)
+        guard let searchUrl = URL(string: urlString)
             else {
                 print("Error: NSURL gamecrazyUrl")
                 return
@@ -160,44 +161,44 @@ class YoutuberManager {
             
             if HTTPStatusCode == 200 && error == nil {
                 do {
-                    guard let  resultsDict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary,
-                        items = resultsDict["items"] as? NSArray
+                    guard let  resultsDict = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary,
+                        let items = resultsDict["items"] as? NSArray
                         else { fatalError() }
                     
                     guard items.count != 0 else { return }
                     
                     for i in 0...items.count - 1 {
                         guard let  itemDict = items[i] as? NSDictionary,
-                                        snippet = itemDict["snippet"] as? NSDictionary,
-                                        title = snippet["title"] as? String,
-                                        thumbnail = snippet["thumbnails"] as? NSDictionary,
-                                        defaults = thumbnail["default"] as? NSDictionary,
-                                        thumbnailUrl = defaults["url"] as? String,
-                                        resourceId = itemDict["id"] as? NSDictionary,
-                                        videoId = resourceId["videoId"] as? String
+                                        let snippet = itemDict["snippet"] as? NSDictionary,
+                                        let title = snippet["title"] as? String,
+                                        let thumbnail = snippet["thumbnails"] as? NSDictionary,
+                                        let defaults = thumbnail["default"] as? NSDictionary,
+                                        let thumbnailUrl = defaults["url"] as? String,
+                                        let resourceId = itemDict["id"] as? NSDictionary,
+                                        let videoId = resourceId["videoId"] as? String
                             else { fatalError() }
                         
                         searchResult.append(Playlist(title: title, thumbnailUrl: thumbnailUrl, videoId: videoId))
                     }
                     
                     switch vc {
-                    case .GameCrazy:
-                        dispatch_async(dispatch_get_main_queue(), {
+                    case .gameCrazy:
+                        DispatchQueue.main.async(execute: {
                             self.gamecrazySearchDelegate?.manager(self, searchResult: searchResult)
                         })
                         
-                    case .Live:
-                        dispatch_async(dispatch_get_main_queue(), {
+                    case .live:
+                        DispatchQueue.main.async(execute: {
                             self.liveSearchDelegate?.manager(self, searchResult: searchResult)
                         })
                         
-                    case .GameProducer:
-                        dispatch_async(dispatch_get_main_queue(), {
+                    case .gameProducer:
+                        DispatchQueue.main.async(execute: {
                             self.gameproducerSearchDelegate?.manager(self, searchResult: searchResult)
                         })
                         
-                    case .VRGame:
-                        dispatch_async(dispatch_get_main_queue(), {
+                    case .vrGame:
+                        DispatchQueue.main.async(execute: {
                             self.vrgameSearchDelegate?.manager(self, searchResult: searchResult)
                         })
                     }
@@ -220,11 +221,11 @@ class YoutuberManager {
 
 
 protocol YoutuberManagerDelegate: class {
-    func manager(manager: YoutuberManager, playlistResult: [Playlist], nextPageToken: String)
+    func manager(_ manager: YoutuberManager, playlistResult: [Playlist], nextPageToken: String)
 }
 
 protocol YoutuberManagerSearchDelegate: class {
-    func manager(manager: YoutuberManager, searchResult: [Playlist])
+    func manager(_ manager: YoutuberManager, searchResult: [Playlist])
 }
 
 
